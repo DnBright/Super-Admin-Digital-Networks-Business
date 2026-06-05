@@ -482,6 +482,9 @@
       @include('Divisions.webdev.reviews')
       @include('Divisions.webdev.chat')
 
+      {{-- Brand Identity Division Tab Integrations --}}
+      @include('Divisions.brandidentity.dashboard')
+
       <!-- Bottom spacer -->
       <div class="h-2"></div>
 

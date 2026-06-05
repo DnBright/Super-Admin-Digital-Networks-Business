@@ -8,6 +8,6 @@ class AssetVaultController extends Controller
 {
     public function index()
     {
-        return view('Divisions.brandidentity.dashboard');
+        return view('index', ['tab' => 'brandidentity_dashboard']);
     }
 }
