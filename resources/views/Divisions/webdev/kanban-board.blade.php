@@ -1,12 +1,4 @@
-@extends('layouts.division-app')
-
-@section('title', 'WebDev Workboard')
-@section('division-name', 'Web Development')
-@section('division-color-classes', 'bg-blue-500/10 text-blue-400 border border-blue-500/20')
-@section('page-title', 'Kanban Board')
-
-@section('content')
-<div class="space-y-6 h-full flex flex-col">
+<div x-show="currentTab === 'webdev_kanban'" class="space-y-6 h-full flex flex-col" x-cloak>
     <!-- Workboard Header -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
