@@ -33,32 +33,32 @@
             <div class="pt-4 border-t border-slate-800/60">
                 <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Divisions (1-6)</span>
                 <!-- Division 1 -->
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200">
+                <a href="{{ route('webdev.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200">
                     <span class="w-2.5 h-2.5 bg-blue-500 rounded-full mr-3"></span>
                     Web Development
                 </a>
                 <!-- Division 2 -->
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('brandidentity.assets') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-purple-500 rounded-full mr-3"></span>
                     Brand Identity
                 </a>
                 <!-- Division 3 -->
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('performanceads.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full mr-3"></span>
                     Performance Ads
                 </a>
                 <!-- Division 4 -->
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('mockup3d.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-amber-500 rounded-full mr-3"></span>
                     3D Mockups & Arsitek
                 </a>
                 <!-- Division 5 -->
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('socialmedia.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-pink-500 rounded-full mr-3"></span>
                     Social Media Mgt
                 </a>
                 <!-- Division 6 -->
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('videoproduction.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-rose-500 rounded-full mr-3 animate-pulse"></span>
                     Video & Motion <span class="ml-auto text-[9px] bg-rose-500/20 text-rose-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">New</span>
                 </a>
@@ -68,14 +68,23 @@
             @if($division === 'webdev')
                 <div class="pb-2">
                     <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Webdev Console</span>
-                    <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-300 rounded-md bg-slate-800/60 border border-slate-700/30 transition-all duration-200">
+                    <a href="{{ route('webdev.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.dashboard') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200">
                         Overview Dashboard
                     </a>
-                    <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                    <a href="{{ route('webdev.kanban') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.kanban') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
                         Kanban Workboard
                     </a>
-                    <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
-                        Server & DNS Manager
+                    <a href="{{ route('webdev.templates.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.templates.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
+                        Template Control
+                    </a>
+                    <a href="{{ route('webdev.packages.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.packages.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
+                        Package Control
+                    </a>
+                    <a href="{{ route('webdev.reviews.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.reviews.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
+                        Review Control
+                    </a>
+                    <a href="{{ route('webdev.chat.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.chat.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
+                        Live Chat
                     </a>
                 </div>
             @else
@@ -88,7 +97,7 @@
             @endif
 
             <div class="pt-4 border-t border-slate-800/60">
-                <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 hover:bg-slate-800/30 rounded-md transition-all duration-200">
+                <a href="{{ url('/') }}" class="flex items-center px-3 py-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 hover:bg-slate-800/30 rounded-md transition-all duration-200">
                     &larr; Back to Super Admin
                 </a>
             </div>
