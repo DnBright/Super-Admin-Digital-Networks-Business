@@ -294,7 +294,7 @@
       <div>
         <p class="section-label mb-3">Divisions</p>
         <template x-for="div in navDivisions" :key="div.id">
-          <a class="nav-link mt-0.5" :class="div.alert ? 'text-slate-300' : ''">
+          <a :href="div.url" class="nav-link mt-0.5" :class="div.alert ? 'text-slate-300' : ''">
             <i :class="div.icon + ' nav-icon'" :style="'color:' + div.color"></i>
             <span x-text="div.name"></span>
             <span x-show="div.badge" class="ml-auto text-[10px] font-bold font-mono px-1.5 py-0.5 rounded"
@@ -676,12 +676,12 @@ function commandCenter() {
 
     // ── Sidebar nav ──
     navDivisions: [
-      { id: 1, name: 'Web Dev',        icon: 'fa-solid fa-code',     color: '#60a5fa', badge: '24', badgeClass: 'bg-blue-500/20 text-blue-300' },
-      { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300' },
-      { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300' },
-      { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300' },
-      { id: 5, name: 'Social Media',   icon: 'fa-solid fa-hashtag',  color: '#f472b6', badge: '27', badgeClass: 'bg-pink-500/20 text-pink-300' },
-      { id: 6, name: 'Video Prod',     icon: 'fa-solid fa-film',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300' },
+      { id: 1, name: 'Web Dev',        icon: 'fa-solid fa-code',     color: '#60a5fa', badge: '24', badgeClass: 'bg-blue-500/20 text-blue-300', url: '{{ route('webdev.dashboard') }}' },
+      { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.assets') }}' },
+      { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}' },
+      { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}' },
+      { id: 5, name: 'Social Media',   icon: 'fa-solid fa-hashtag',  color: '#f472b6', badge: '27', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('socialmedia.dashboard') }}' },
+      { id: 6, name: 'Video Prod',     icon: 'fa-solid fa-film',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('videoproduction.dashboard') }}' },
     ],
 
     // ── Sparkline ──
