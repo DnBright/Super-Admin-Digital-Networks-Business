@@ -343,7 +343,39 @@
                  :class="currentTab === 'brandidentity_tokens' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
                 Revision Tokens
               </a>
-            </div>e>
+            </div>
+
+            <!-- Performance Ads Submenu (shown only inside Super Admin layout when active) -->
+            <div x-show="div.id === 3 && currentTab.startsWith('performanceads_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-orange-500/30 mt-1 rounded-r-md" x-cloak>
+              <a href="{{ route('performanceads.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'performanceads_dashboard' ? 'text-orange-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Overview Dashboard
+              </a>
+            </div>
+
+            <!-- 3D Mockup Submenu (shown only inside Super Admin layout when active) -->
+            <div x-show="div.id === 4 && currentTab.startsWith('mockup3d_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-cyan-500/30 mt-1 rounded-r-md" x-cloak>
+              <a href="{{ route('mockup3d.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'mockup3d_dashboard' ? 'text-cyan-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Overview Dashboard
+              </a>
+            </div>
+
+            <!-- Social Media Submenu (shown only inside Super Admin layout when active) -->
+            <div x-show="div.id === 5 && currentTab.startsWith('socialmedia_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-pink-500/30 mt-1 rounded-r-md" x-cloak>
+              <a href="{{ route('socialmedia.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'socialmedia_dashboard' ? 'text-pink-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Overview Dashboard
+              </a>
+            </div>
+
+            <!-- Video Production Submenu (shown only inside Super Admin layout when active) -->
+            <div x-show="div.id === 6 && currentTab.startsWith('videoproduction_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-red-500/30 mt-1 rounded-r-md" x-cloak>
+              <a href="{{ route('videoproduction.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'videoproduction_dashboard' ? 'text-red-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Overview Dashboard
+              </a>
+            </div>
           </div>
         </template>
       </div>
