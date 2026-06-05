@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Root landing page
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // Load sub-route files from the web/ directory
