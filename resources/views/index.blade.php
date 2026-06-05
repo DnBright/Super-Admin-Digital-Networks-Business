@@ -302,7 +302,7 @@
                     :class="div.badgeClass" x-text="div.badge"></span>
             </a>
                        <!-- Web Dev Submenu (shown only inside Super Admin layout when in Web Dev tabs) -->
-            <div x-show="div.id === 1 && currentTab.startsWith('webdev_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-955/45 border-l-2 border-blue-500/30 mt-1 rounded-r-md" x-cloak>
+            <div x-show="div.id === 1 && currentTab.startsWith('webdev_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-blue-500/30 mt-1 rounded-r-md" x-cloak>
               <a href="{{ route('webdev.dashboard') }}" class="block text-[11px] font-medium transition-colors"
                  :class="currentTab === 'webdev_dashboard' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
                 Overview Dashboard
@@ -330,7 +330,7 @@
             </div>
 
             <!-- Brand Identity Submenu (shown only inside Super Admin layout when in Brand Identity tabs) -->
-            <div x-show="div.id === 2 && currentTab.startsWith('brandidentity_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-955/45 border-l-2 border-purple-500/30 mt-1 rounded-r-md" x-cloak>
+            <div x-show="div.id === 2 && currentTab.startsWith('brandidentity_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-purple-500/30 mt-1 rounded-r-md" x-cloak>
               <a href="{{ route('brandidentity.dashboard') }}" class="block text-[11px] font-medium transition-colors"
                  :class="currentTab === 'brandidentity_dashboard' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
                 Overview Dashboard
