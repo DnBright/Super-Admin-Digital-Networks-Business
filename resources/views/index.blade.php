@@ -1128,6 +1128,501 @@
 
       </div>
 
+      <!-- ======================================================
+           TAB: REVENUE REPORT
+      ====================================================== -->
+      <div x-show="currentTab === 'revenue_report'" class="space-y-5" x-cloak>
+        
+        <!-- Revenue Report Header -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-slate-800 font-bold text-base">Financial Analytics & Revenue Report</h2>
+            <p class="text-slate-500 text-xs mt-0.5">Pantau Monthly Recurring Revenue (MRR), performansi finansial divisi, dan log transaksi masuk secara realtime.</p>
+          </div>
+          <div class="flex gap-2">
+            <button @click="alert('Mengekspor laporan keuangan Q2...')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs px-3.5 py-2 rounded-lg transition-colors flex items-center gap-1.5 border border-slate-200">
+              <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
+            <button @click="alert('Mengunduh dokumen PDF laporan...')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs px-3.5 py-2 rounded-lg transition-all shadow-md shadow-indigo-600/15 flex items-center gap-1.5">
+              <i class="fa-solid fa-file-pdf"></i> Download PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- 4-Column Financial Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Card 1: MRR -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Monthly Recurring Revenue (MRR)</span>
+              <div class="w-6 h-6 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-600 text-[10px] font-bold">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-slate-800 font-black text-lg">Rp 135.500.000</span>
+              <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">+12.4%</span>
+            </div>
+            <p class="text-[10px] text-slate-400">Total pendapatan berulang bulan Juni 2026</p>
+          </div>
+
+          <!-- Card 2: ARR -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Annual Run Rate (ARR)</span>
+              <div class="w-6 h-6 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 text-[10px] font-bold">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-slate-800 font-black text-lg">Rp 1.626.000.000</span>
+              <span class="text-[10px] font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">+8.2%</span>
+            </div>
+            <p class="text-[10px] text-slate-400">Proyeksi pendapatan tahunan berjalan</p>
+          </div>
+
+          <!-- Card 3: Outstanding Invoice -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Outstanding Invoices</span>
+              <div class="w-6 h-6 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600 text-[10px] font-bold">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-slate-800 font-black text-lg">Rp 43.500.000</span>
+              <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">2 Pending</span>
+            </div>
+            <p class="text-[10px] text-slate-400">Tagihan aktif yang belum dibayar</p>
+          </div>
+
+          <!-- Card 4: Avg Deal Size -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Average Deal Size</span>
+              <div class="w-6 h-6 rounded-lg bg-cyan-50 flex items-center justify-center text-cyan-600 text-[10px] font-bold">
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span class="text-slate-800 font-black text-lg">Rp 26.100.000</span>
+              <span class="text-[10px] font-bold text-cyan-600 bg-cyan-50 px-1.5 py-0.5 rounded">+4.5%</span>
+            </div>
+            <p class="text-[10px] text-slate-400">Nilai rata-rata proyek per klien</p>
+          </div>
+
+        </div>
+
+        <!-- Visual breakdown grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          
+          <!-- Left: Division Financial Performance (Takes 1 Col) -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-4">
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-6 bg-slate-100 rounded-lg flex items-center justify-center text-xs text-slate-600">
+                <i class="fa-solid fa-pie-chart"></i>
+              </div>
+              <h3 class="text-xs font-bold text-slate-700 uppercase tracking-widest">Revenue by Division Node</h3>
+            </div>
+            <p class="text-[11px] text-slate-450 leading-relaxed">Persentase kontribusi pemasukan dari 6 cabang operasional aktif.</p>
+            
+            <div class="space-y-3.5">
+              <!-- Web Dev -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-[11px] font-bold text-slate-700">
+                  <span>Web Development</span>
+                  <span>45% (Rp 61.200.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-blue-500 h-full rounded-full" style="width: 45%"></div>
+                </div>
+              </div>
+              <!-- Performance Ads -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-[11px] font-bold text-slate-700">
+                  <span>Performance Ads</span>
+                  <span>25% (Rp 33.800.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-orange-400 h-full rounded-full" style="width: 25%"></div>
+                </div>
+              </div>
+              <!-- Video Production -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-[11px] font-bold text-slate-700">
+                  <span>Video Production</span>
+                  <span>15% (Rp 20.300.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-red-400 h-full rounded-full" style="width: 15%"></div>
+                </div>
+              </div>
+              <!-- Social Media -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-[11px] font-bold text-slate-700">
+                  <span>Social Media Management</span>
+                  <span>8% (Rp 10.800.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-pink-400 h-full rounded-full" style="width: 8%"></div>
+                </div>
+              </div>
+              <!-- Brand Identity & 3D (merged/other) -->
+              <div class="space-y-1">
+                <div class="flex justify-between text-[11px] font-bold text-slate-700">
+                  <span>Brand & 3D visualization</span>
+                  <span>7% (Rp 9.400.000)</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                  <div class="bg-purple-400 h-full rounded-full" style="width: 7%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Transaction History Log (Takes 2 Cols) -->
+          <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-card overflow-hidden">
+            <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-slate-100 rounded-lg flex items-center justify-center text-xs text-slate-600">
+                  <i class="fa-solid fa-list-check"></i>
+                </div>
+                <div>
+                  <h3 class="text-xs font-bold text-slate-700 uppercase tracking-widest">Recent Payments History</h3>
+                  <p class="text-[10px] text-slate-400 mt-0.5">Catatan invoice lunas terverifikasi oleh sistem notifikasi global</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-bold text-slate-550 bg-slate-50 border border-slate-200 px-2 py-1 rounded-lg">Last 30 Days</span>
+            </div>
+
+            <!-- Transaction Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead>
+                  <tr class="bg-slate-50 border-b border-slate-100 text-[10px] font-bold uppercase tracking-widest text-slate-450">
+                    <th class="px-5 py-3.5">Invoice ID</th>
+                    <th class="px-4 py-3.5">Client Account</th>
+                    <th class="px-4 py-3.5">Payment Method</th>
+                    <th class="px-4 py-3.5 text-right">Settled Amount</th>
+                    <th class="px-5 py-3.5 text-right">Payment Date</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-xs text-slate-600">
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-5 py-3.5 font-mono text-indigo-600 font-bold">#INV-2026-001</td>
+                    <td class="px-4 py-3.5">
+                      <p class="font-bold text-slate-800">PT Maju Bersama</p>
+                      <span class="text-[9px] text-slate-400">Web Development</span>
+                    </td>
+                    <td class="px-4 py-3.5">
+                      <span class="inline-flex items-center gap-1 text-[9px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                        <i class="fa-solid fa-building-columns text-slate-400"></i> Bank Transfer
+                      </span>
+                    </td>
+                    <td class="px-4 py-3.5 text-right font-bold text-slate-800">Rp 45.000.000</td>
+                    <td class="px-5 py-3.5 text-right text-slate-400">04 Juni 2026</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-5 py-3.5 font-mono text-indigo-600 font-bold">#INV-2026-004</td>
+                    <td class="px-4 py-3.5">
+                      <p class="font-bold text-slate-800">PT Maju Bersama</p>
+                      <span class="text-[9px] text-slate-400">Brand Identity</span>
+                    </td>
+                    <td class="px-4 py-3.5">
+                      <span class="inline-flex items-center gap-1 text-[9px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                        <i class="fa-solid fa-credit-card text-slate-400"></i> Credit Card
+                      </span>
+                    </td>
+                    <td class="px-4 py-3.5 text-right font-bold text-slate-800">Rp 12.000.000</td>
+                    <td class="px-5 py-3.5 text-right text-slate-400">01 Juni 2026</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-5 py-3.5 font-mono text-indigo-600 font-bold">#INV-2026-009</td>
+                    <td class="px-4 py-3.5">
+                      <p class="font-bold text-slate-800">Startup Nusantara</p>
+                      <span class="text-[9px] text-slate-400">Social Media</span>
+                    </td>
+                    <td class="px-4 py-3.5">
+                      <span class="inline-flex items-center gap-1 text-[9px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
+                        <i class="fa-brands fa-paypal text-slate-400"></i> PayPal
+                      </span>
+                    </td>
+                    <td class="px-4 py-3.5 text-right font-bold text-slate-800">Rp 8.500.000</td>
+                    <td class="px-5 py-3.5 text-right text-slate-400">28 Mei 2026</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ======================================================
+           TAB: BILLING & INVOICE
+      ====================================================== -->
+      <div x-show="currentTab === 'billing_invoice'" class="space-y-5" x-cloak>
+        
+        <!-- Billing & Invoice Header -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-slate-800 font-bold text-base">Billing Console & Invoice Issuer</h2>
+            <p class="text-slate-500 text-xs mt-0.5">Kelola seluruh tagihan divisi terpusat dan terbitkan invoice review client.</p>
+          </div>
+          
+          <!-- Filters tab links -->
+          <div class="flex bg-slate-100 p-0.5 border border-slate-200 rounded-lg">
+            <button @click="billingFilter = 'all'" :class="billingFilter === 'all' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'" class="text-[10px] font-bold px-3 py-1.5 rounded-md transition-all">All</button>
+            <button @click="billingFilter = 'paid'" :class="billingFilter === 'paid' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'" class="text-[10px] font-bold px-3 py-1.5 rounded-md transition-all">Paid</button>
+            <button @click="billingFilter = 'unpaid'" :class="billingFilter === 'unpaid' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'" class="text-[10px] font-bold px-3 py-1.5 rounded-md transition-all">Unpaid</button>
+            <button @click="billingFilter = 'overdue'" :class="billingFilter === 'overdue' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'" class="text-[10px] font-bold px-3 py-1.5 rounded-md transition-all">Overdue</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          
+          <!-- Central Invoice List Table (Takes 2 Cols) -->
+          <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 shadow-card overflow-hidden">
+            <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center">
+                  <i class="fa-solid fa-file-invoice-dollar text-white text-xs"></i>
+                </div>
+                <div>
+                  <h3 class="text-[13px] font-bold text-slate-800">Invoice Registry</h3>
+                  <p class="text-[11px] text-slate-400">Total invoice terdaftar berdasarkan filter</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Invoices Table list -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead>
+                  <tr class="bg-slate-50 border-b border-slate-100 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                    <th class="px-5 py-3.5">Invoice ID</th>
+                    <th class="px-4 py-3.5">Client & Division</th>
+                    <th class="px-4 py-3.5">Settlement Amount</th>
+                    <th class="px-4 py-3.5">Due Date</th>
+                    <th class="px-4 py-3.5 text-center">Status</th>
+                    <th class="px-5 py-3.5 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 text-xs text-slate-600">
+                  <template x-for="inv in invoices" :key="inv.id">
+                    <tr x-show="billingFilter === 'all' || inv.status === billingFilter" class="hover:bg-slate-50 transition-colors">
+                      <td class="px-5 py-3.5 font-mono text-indigo-600 font-bold" x-text="'#' + inv.invoiceNo"></td>
+                      <td class="px-4 py-3.5">
+                        <p class="font-bold text-slate-800" x-text="inv.clientName"></p>
+                        <span class="text-[9px] text-slate-400" x-text="inv.division"></span>
+                      </td>
+                      <td class="px-4 py-3.5 font-bold text-slate-800" x-text="inv.amount"></td>
+                      <td class="px-4 py-3.5 text-slate-500" x-text="inv.dueDate"></td>
+                      <td class="px-4 py-3.5 text-center">
+                        <span class="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wide"
+                              :class="inv.status === 'paid' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : (inv.status === 'overdue' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-amber-50 text-amber-700 border border-amber-200')"
+                              x-text="inv.status"></span>
+                      </td>
+                      <td class="px-5 py-3.5 text-right">
+                        <button @click="alert('Reviewing invoice: ' + inv.invoiceNo)" class="text-indigo-600 hover:text-indigo-700 font-bold text-[10px] hover:underline">Review</button>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quick Invoice Generator (Takes 1 Col) -->
+          <div class="space-y-5">
+            
+            <!-- Quick Invoice Issuer Form -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-4">
+              <h3 class="text-xs font-bold text-slate-700 uppercase tracking-widest flex items-center gap-2">
+                <i class="fa-solid fa-file-circle-plus text-indigo-500"></i>
+                Quick Invoice Issuer
+              </h3>
+              <p class="text-[11px] text-slate-500 leading-relaxed">Terbitkan draft invoice baru untuk client terdaftar di database.</p>
+
+              <form @submit.prevent="createInvoice()" class="space-y-3">
+                <!-- Client select -->
+                <div>
+                  <label class="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Select Client</label>
+                  <select x-model="newInvoiceClient" required class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs text-slate-700 focus:outline-none focus:border-indigo-500 transition-colors">
+                    <option value="">-- Select Client --</option>
+                    <option value="PT Maju Bersama">PT Maju Bersama</option>
+                    <option value="CV Kreasi Digital">CV Kreasi Digital</option>
+                    <option value="Startup Nusantara">Startup Nusantara</option>
+                    <option value="Nusantara Global">Nusantara Global</option>
+                  </select>
+                </div>
+
+                <!-- Division select -->
+                <div>
+                  <label class="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Project Division</label>
+                  <select x-model="newInvoiceDiv" required class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs text-slate-700 focus:outline-none focus:border-indigo-500 transition-colors">
+                    <option value="">-- Select Division --</option>
+                    <option value="Web Dev">Web Development</option>
+                    <option value="Brand Identity">Brand Identity</option>
+                    <option value="Perf. Ads">Performance Ads</option>
+                    <option value="3D Mockup">3D Mockup</option>
+                    <option value="Social Media">Social Media</option>
+                    <option value="Video Prod">Video Production</option>
+                  </select>
+                </div>
+
+                <!-- Amount -->
+                <div>
+                  <label class="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Billing Amount (Rp)</label>
+                  <input type="number" x-model="newInvoiceAmount" required placeholder="Contoh: 15000000"
+                         class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs text-slate-700 placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors">
+                </div>
+
+                <!-- Due Date -->
+                <div>
+                  <label class="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Due Date</label>
+                  <input type="date" x-model="newInvoiceDueDate" required
+                         class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs text-slate-700 focus:outline-none focus:border-indigo-500 transition-colors">
+                </div>
+
+                <button type="submit"
+                        class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs py-2 rounded-lg transition-all shadow-lg shadow-indigo-600/15 hover:shadow-indigo-600/25 active:scale-[0.99] w-full flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  Issue & Send Invoice
+                </button>
+              </form>
+            </div>
+
+            <!-- Billing Summary status ratio -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-4">
+              <h3 class="text-xs font-bold text-slate-700 uppercase tracking-widest">Settlement Breakdown</h3>
+              <div class="space-y-3.5">
+                <!-- Paid -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-bold text-slate-500">
+                    <span>Paid Invoices</span>
+                    <span class="text-emerald-600 font-bold">57.000.000 (Rp)</span>
+                  </div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-emerald-500 h-full rounded-full" style="width: 56%"></div>
+                  </div>
+                </div>
+                <!-- Unpaid -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-bold text-slate-500">
+                    <span>Unpaid Drafts</span>
+                    <span class="text-amber-600 font-bold">50.000.000 (Rp)</span>
+                  </div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-amber-500 h-full rounded-full" style="width: 44%"></div>
+                  </div>
+                </div>
+                <!-- Overdue -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-[10px] font-bold text-slate-500">
+                    <span>Overdue Debts</span>
+                    <span class="text-rose-605 font-bold">28.500.000 (Rp)</span>
+                  </div>
+                  <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                    <div class="bg-rose-500 h-full rounded-full" style="width: 28%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ======================================================
+           TAB: CLIENT DIRECTORY
+      ====================================================== -->
+      <div x-show="currentTab === 'client_directory'" class="space-y-5" x-cloak>
+        
+        <!-- Client Directory Header -->
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-slate-800 font-bold text-base">Central Client Directory</h2>
+            <p class="text-slate-500 text-xs mt-0.5">Daftar lengkap akun klien di seluruh 6 divisi operasional terintegrasi.</p>
+          </div>
+          <button @click="alert('Menambahkan akun klien baru...')" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs px-3.5 py-2 rounded-lg transition-all shadow-md shadow-indigo-600/15 flex items-center gap-1.5">
+            <i class="fa-solid fa-user-plus"></i> Add New Client
+          </button>
+        </div>
+
+        <!-- Clients Cards Directory Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <template x-for="cli in clientDirectory" :key="cli.id">
+            <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-4 hover:border-slate-350 transition-all duration-200">
+              
+              <!-- Client Main Info -->
+              <div class="flex items-start justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center font-black text-slate-600 border border-slate-200 text-sm" x-text="cli.name.split(' ').map(n => n[0]).join('')"></div>
+                  <div>
+                    <h3 class="text-xs font-bold text-slate-800" x-text="cli.name"></h3>
+                    <p class="text-[10px] text-slate-400" x-text="'Pic: ' + cli.contact"></p>
+                  </div>
+                </div>
+                
+                <!-- Status Badge -->
+                <span class="px-2 py-0.5 rounded text-[9px] font-bold uppercase"
+                      :class="cli.status === 'active' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-500 border border-slate-200'"
+                      x-text="cli.status"></span>
+              </div>
+
+              <!-- Contact detail info -->
+              <div class="space-y-2 text-xs text-slate-600 border-t border-b border-slate-100 py-3">
+                <div class="flex items-center gap-2">
+                  <i class="fa-regular fa-envelope text-slate-400 text-[10px] w-3"></i>
+                  <span x-text="cli.email" class="font-mono text-[10px]"></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-phone text-slate-400 text-[10px] w-3"></i>
+                  <span x-text="cli.phone" class="font-mono text-[10px]"></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i class="fa-solid fa-user-tie text-slate-400 text-[10px] w-3"></i>
+                  <span>Manager: <strong class="text-slate-700" x-text="cli.manager"></strong></span>
+                </div>
+              </div>
+
+              <!-- Active Services / Division Nodes mapping -->
+              <div>
+                <p class="text-[9px] font-bold text-slate-400 uppercase tracking-wide mb-2">Active Services Nodes</p>
+                <div class="flex flex-wrap gap-1.5">
+                  <template x-for="srv in cli.services">
+                    <span class="inline-flex items-center text-[9px] font-bold text-slate-600 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded" x-text="srv"></span>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Action triggers -->
+              <div class="flex gap-2 pt-2">
+                <!-- Magic link trigger -->
+                <button @click="magicLinkClient = cli.name; currentTab = 'access_control'; alert('Silahkan pilih divisi proyek untuk membuat link token ' + cli.name)"
+                        class="flex-1 bg-slate-50 hover:bg-slate-100 text-slate-650 border border-slate-200 font-bold text-[10px] py-2 rounded-lg transition-colors flex items-center justify-center gap-1">
+                  <i class="fa-solid fa-key text-slate-400"></i> Magic Link
+                </button>
+                <!-- Toggle suspend status -->
+                <button @click="cli.status = (cli.status === 'active' ? 'suspended' : 'active')"
+                        class="flex-1 bg-slate-50 hover:bg-slate-100 font-bold text-[10px] py-2 rounded-lg transition-colors flex items-center justify-center gap-1"
+                        :class="cli.status === 'active' ? 'text-rose-600' : 'text-emerald-600'">
+                  <i class="fa-solid" :class="cli.status === 'active' ? 'fa-user-slash' : 'fa-user-check'"></i>
+                  <span x-text="cli.status === 'active' ? 'Suspend' : 'Activate'"></span>
+                </button>
+              </div>
+
+            </div>
+          </template>
+        </div>
+
+      </div>
+
       <!-- Bottom spacer -->
       <div class="h-2"></div>
 
