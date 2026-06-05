@@ -331,6 +331,24 @@
                 </a>
               </div>
             </template>
+
+            <!-- Brand Identity Submenu (shown only inside Super Admin layout when in Brand Identity tabs) -->
+            <template x-if="div.id === 2 && currentTab.startsWith('brandidentity_')">
+              <div class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-purple-500/30 mt-1 rounded-r-md">
+                <a href="{{ route('brandidentity.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'brandidentity_dashboard' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
+                  Overview Dashboard
+                </a>
+                <a href="{{ route('brandidentity.assets') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'brandidentity_assets' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
+                  Asset Handover Vault
+                </a>
+                <a href="{{ route('brandidentity.tokens') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'brandidentity_tokens' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
+                  Revision Tokens
+                </a>
+              </div>
+            </template>
           </div>
         </template>
       </div>
@@ -393,7 +411,7 @@
 
         <!-- Breadcrumb / Page title -->
         <div class="flex items-center gap-2 min-w-0">
-          <span class="text-slate-400 text-xs hidden sm:block" x-text="currentTab.startsWith('webdev_') ? 'Web Dev' : 'Dashboard'">Dashboard</span>
+          <span class="text-slate-400 text-xs hidden sm:block" x-text="currentTab.startsWith('webdev_') ? 'Web Dev' : (currentTab.startsWith('brandidentity_') ? 'Brand Identity' : 'Dashboard')">Dashboard</span>
           <i class="fa-solid fa-chevron-right text-[9px] text-slate-300 hidden sm:block"></i>
           <h1 class="text-slate-800 font-bold text-[14px] leading-tight truncate"
               x-text="currentTab === 'global_command' ? 'Global Command Overview' :
@@ -407,7 +425,10 @@
                       currentTab === 'webdev_templates' ? 'Template Control' :
                       currentTab === 'webdev_packages' ? 'Package Control' :
                       currentTab === 'webdev_reviews' ? 'Review Control' :
-                      currentTab === 'webdev_chat' ? 'Live Chat Inbox' : 'Console'">
+                      currentTab === 'webdev_chat' ? 'Live Chat Inbox' :
+                      currentTab === 'brandidentity_dashboard' ? 'Overview Dashboard' :
+                      currentTab === 'brandidentity_assets' ? 'Asset Handover Vault' :
+                      currentTab === 'brandidentity_tokens' ? 'Revision Tokens Manager' : 'Console'">
             Global Command Overview
           </h1>
         </div>
@@ -484,6 +505,8 @@
 
       {{-- Brand Identity Division Tab Integrations --}}
       @include('Divisions.brandidentity.dashboard')
+      @include('Divisions.brandidentity.assets')
+      @include('Divisions.brandidentity.tokens')
 
       <!-- Bottom spacer -->
       <div class="h-2"></div>
