@@ -8,6 +8,6 @@ class StorageMonitorController extends Controller
 {
     public function index()
     {
-        return view('videoproduction.dashboard');
+        return view('Divisions.videoproduction.dashboard');
     }
 }

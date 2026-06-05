@@ -8,11 +8,11 @@ class ServerManagerController extends Controller
 {
     public function index()
     {
-        return view('webdev.dashboard');
+        return view('Divisions.webdev.dashboard');
     }
 
     public function kanban()
     {
-        return view('webdev.kanban-board');
+        return view('Divisions.webdev.kanban-board');
     }
 }
