@@ -8,6 +8,6 @@ class StorageMonitorController extends Controller
 {
     public function index()
     {
-        return response()->json(['message' => 'VideoProduction Storage Monitor Panel']);
+        return view('videoproduction.dashboard');
     }
 }
