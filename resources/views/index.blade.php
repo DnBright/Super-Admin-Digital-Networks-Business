@@ -300,80 +300,91 @@
               <span x-text="div.name"></span>
               <span x-show="div.badge" class="ml-auto text-[10px] font-bold font-mono px-1.5 py-0.5 rounded"
                     :class="div.badgeClass" x-text="div.badge"></span>
-            </a>
-                       <!-- Web Dev Submenu (shown only inside Super Admin layout when in Web Dev tabs) -->
-            <div x-show="div.id === 1 && currentTab.startsWith('webdev_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-blue-500/30 mt-1 rounded-r-md" x-cloak>
-              <a href="{{ route('webdev.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'webdev_dashboard' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Overview Dashboard
+            </a                        <!-- Web Dev Submenu (shown only inside Super Admin layout when in Web Dev tabs) -->
+            <div x-show="div.id === 1 && currentTab.startsWith('webdev_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('webdev.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'webdev_dashboard' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                <span>Overview Dashboard</span>
               </a>
-              <a href="{{ route('webdev.kanban') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'webdev_kanban' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Kanban Workboard
+              <a href="{{ route('webdev.kanban') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'webdev_kanban' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-table-columns text-[10px]"></i>
+                <span>Kanban Workboard</span>
               </a>
-              <a href="{{ route('webdev.templates.index') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'webdev_templates' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Template Control
+              <a href="{{ route('webdev.templates.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'webdev_templates' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-laptop-code text-[10px]"></i>
+                <span>Template Control</span>
               </a>
-              <a href="{{ route('webdev.packages.index') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'webdev_packages' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Package Control
+              <a href="{{ route('webdev.packages.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'webdev_packages' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-tags text-[10px]"></i>
+                <span>Package Control</span>
               </a>
-              <a href="{{ route('webdev.reviews.index') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'webdev_reviews' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Review Control
+              <a href="{{ route('webdev.reviews.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'webdev_reviews' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-star text-[10px]"></i>
+                <span>Review Control</span>
               </a>
-              <a href="{{ route('webdev.chat.index') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'webdev_chat' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Live Chat Inbox
+              <a href="{{ route('webdev.chat.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'webdev_chat' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-comments text-[10px]"></i>
+                <span>Live Chat Inbox</span>
               </a>
             </div>
 
             <!-- Brand Identity Submenu (shown only inside Super Admin layout when in Brand Identity tabs) -->
-            <div x-show="div.id === 2 && currentTab.startsWith('brandidentity_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-purple-500/30 mt-1 rounded-r-md" x-cloak>
-              <a href="{{ route('brandidentity.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'brandidentity_dashboard' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Overview Dashboard
+            <div x-show="div.id === 2 && currentTab.startsWith('brandidentity_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('brandidentity.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'brandidentity_dashboard' ? 'bg-purple-500/10 text-purple-400 font-bold border-l-2 border-purple-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                <span>Overview Dashboard</span>
               </a>
-              <a href="{{ route('brandidentity.assets') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'brandidentity_assets' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Asset Handover Vault
+              <a href="{{ route('brandidentity.assets') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'brandidentity_assets' ? 'bg-purple-500/10 text-purple-400 font-bold border-l-2 border-purple-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-vault text-[10px]"></i>
+                <span>Asset Handover Vault</span>
               </a>
-              <a href="{{ route('brandidentity.tokens') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'brandidentity_tokens' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Revision Tokens
+              <a href="{{ route('brandidentity.tokens') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'brandidentity_tokens' ? 'bg-purple-500/10 text-purple-400 font-bold border-l-2 border-purple-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-key text-[10px]"></i>
+                <span>Revision Tokens</span>
               </a>
             </div>
 
             <!-- Performance Ads Submenu (shown only inside Super Admin layout when active) -->
-            <div x-show="div.id === 3 && currentTab.startsWith('performanceads_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-orange-500/30 mt-1 rounded-r-md" x-cloak>
-              <a href="{{ route('performanceads.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'performanceads_dashboard' ? 'text-orange-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Overview Dashboard
+            <div x-show="div.id === 3 && currentTab.startsWith('performanceads_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('performanceads.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'performanceads_dashboard' ? 'bg-orange-500/10 text-orange-400 font-bold border-l-2 border-orange-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                <span>Overview Dashboard</span>
               </a>
             </div>
 
             <!-- 3D Mockup Submenu (shown only inside Super Admin layout when active) -->
-            <div x-show="div.id === 4 && currentTab.startsWith('mockup3d_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-cyan-500/30 mt-1 rounded-r-md" x-cloak>
-              <a href="{{ route('mockup3d.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'mockup3d_dashboard' ? 'text-cyan-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Overview Dashboard
+            <div x-show="div.id === 4 && currentTab.startsWith('mockup3d_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('mockup3d.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'mockup3d_dashboard' ? 'bg-cyan-500/10 text-cyan-400 font-bold border-l-2 border-cyan-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                <span>Overview Dashboard</span>
               </a>
             </div>
 
             <!-- Social Media Submenu (shown only inside Super Admin layout when active) -->
-            <div x-show="div.id === 5 && currentTab.startsWith('socialmedia_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-pink-500/30 mt-1 rounded-r-md" x-cloak>
-              <a href="{{ route('socialmedia.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'socialmedia_dashboard' ? 'text-pink-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Overview Dashboard
+            <div x-show="div.id === 5 && currentTab.startsWith('socialmedia_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('socialmedia.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'socialmedia_dashboard' ? 'bg-pink-500/10 text-pink-400 font-bold border-l-2 border-pink-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                <span>Overview Dashboard</span>
               </a>
             </div>
 
-            <!-- Video Production Submenu (shown only inside Super Admin layout when active) -->
-            <div x-show="div.id === 6 && currentTab.startsWith('videoproduction_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-red-500/30 mt-1 rounded-r-md" x-cloak>
-              <a href="{{ route('videoproduction.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                 :class="currentTab === 'videoproduction_dashboard' ? 'text-red-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
-                Overview Dashboard
+            <div x-show="div.id === 6 && currentTab.startsWith('videoproduction_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('videoproduction.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'videoproduction_dashboard' ? 'bg-rose-500/10 text-rose-400 font-bold border-l-2 border-rose-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+                <i class="fa-solid fa-chart-pie text-[10px]"></i>
+                <span>Overview Dashboard</span>
               </a>
             </div>
           </div>
