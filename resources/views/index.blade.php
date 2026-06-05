@@ -276,15 +276,15 @@
       <!-- Master Control -->
       <div>
         <p class="section-label mb-3">Master Control</p>
-        <a class="nav-link" :class="currentTab === 'global_command' ? 'active' : ''" @click="currentTab = 'global_command'; closeSidebar()">
+        <a href="{{ url('/global-command') }}" class="nav-link" :class="currentTab === 'global_command' ? 'active' : ''">
           <i class="fa-solid fa-gauge-high nav-icon"></i>
           <span>Global Command</span>
         </a>
-        <a class="nav-link mt-0.5" :class="currentTab === 'access_control' ? 'active' : ''" @click="currentTab = 'access_control'; closeSidebar()">
+        <a href="{{ url('/access-control') }}" class="nav-link mt-0.5" :class="currentTab === 'access_control' ? 'active' : ''">
           <i class="fa-solid fa-shield-halved nav-icon"></i>
           <span>Access Control</span>
         </a>
-        <a class="nav-link mt-0.5" :class="currentTab === 'system_settings' ? 'active' : ''" @click="currentTab = 'system_settings'; closeSidebar()">
+        <a href="{{ url('/system-settings') }}" class="nav-link mt-0.5" :class="currentTab === 'system_settings' ? 'active' : ''">
           <i class="fa-solid fa-sliders nav-icon"></i>
           <span>System Settings</span>
         </a>
@@ -1215,7 +1215,7 @@
 function commandCenter() {
   return {
     clock: '--:--:--',
-    currentTab: 'global_command',
+    currentTab: '{{ $tab ?? 'global_command' }}',
     ipLockEnabled: false,
     magicLinkClient: '',
     magicLinkDiv: '',
