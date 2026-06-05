@@ -44,6 +44,14 @@ return [
             'transaction_mode' => 'DEFERRED',
         ],
 
+        'webdev' => [
+            'driver' => 'sqlite',
+            'url' => env('DB_WEBDEV_URL'),
+            'database' => env('DB_WEBDEV_DATABASE', '/Users/mac/Project Website/Kerja/jasabuatwebsite/database/database.sqlite'),
+            'prefix' => '',
+            'foreign_key_constraints' => env('DB_WEBDEV_FOREIGN_KEYS', true),
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
