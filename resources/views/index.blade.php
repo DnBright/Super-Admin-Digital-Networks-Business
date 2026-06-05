@@ -301,54 +301,49 @@
               <span x-show="div.badge" class="ml-auto text-[10px] font-bold font-mono px-1.5 py-0.5 rounded"
                     :class="div.badgeClass" x-text="div.badge"></span>
             </a>
-            
-            <!-- Web Dev Submenu (shown only inside Super Admin layout when in Web Dev tabs) -->
-            <template x-if="div.id === 1 && currentTab.startsWith('webdev_')">
-              <div class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-blue-500/30 mt-1 rounded-r-md">
-                <a href="{{ route('webdev.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'webdev_dashboard' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
-                  Overview Dashboard
-                </a>
-                <a href="{{ route('webdev.kanban') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'webdev_kanban' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
-                  Kanban Workboard
-                </a>
-                <a href="{{ route('webdev.templates.index') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'webdev_templates' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
-                  Template Control
-                </a>
-                <a href="{{ route('webdev.packages.index') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'webdev_packages' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
-                  Package Control
-                </a>
-                <a href="{{ route('webdev.reviews.index') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'webdev_reviews' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
-                  Review Control
-                </a>
-                <a href="{{ route('webdev.chat.index') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'webdev_chat' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
-                  Live Chat Inbox
-                </a>
-              </div>
-            </template>
+                       <!-- Web Dev Submenu (shown only inside Super Admin layout when in Web Dev tabs) -->
+            <div x-show="div.id === 1 && currentTab.startsWith('webdev_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-955/45 border-l-2 border-blue-500/30 mt-1 rounded-r-md" x-cloak>
+              <a href="{{ route('webdev.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'webdev_dashboard' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Overview Dashboard
+              </a>
+              <a href="{{ route('webdev.kanban') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'webdev_kanban' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Kanban Workboard
+              </a>
+              <a href="{{ route('webdev.templates.index') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'webdev_templates' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Template Control
+              </a>
+              <a href="{{ route('webdev.packages.index') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'webdev_packages' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Package Control
+              </a>
+              <a href="{{ route('webdev.reviews.index') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'webdev_reviews' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Review Control
+              </a>
+              <a href="{{ route('webdev.chat.index') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'webdev_chat' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Live Chat Inbox
+              </a>
+            </div>
 
             <!-- Brand Identity Submenu (shown only inside Super Admin layout when in Brand Identity tabs) -->
-            <template x-if="div.id === 2 && currentTab.startsWith('brandidentity_')">
-              <div class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-purple-500/30 mt-1 rounded-r-md">
-                <a href="{{ route('brandidentity.dashboard') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'brandidentity_dashboard' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
-                  Overview Dashboard
-                </a>
-                <a href="{{ route('brandidentity.assets') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'brandidentity_assets' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
-                  Asset Handover Vault
-                </a>
-                <a href="{{ route('brandidentity.tokens') }}" class="block text-[11px] font-medium transition-colors"
-                   :class="currentTab === 'brandidentity_tokens' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
-                  Revision Tokens
-                </a>
-              </div>
-            </template>
+            <div x-show="div.id === 2 && currentTab.startsWith('brandidentity_')" class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-955/45 border-l-2 border-purple-500/30 mt-1 rounded-r-md" x-cloak>
+              <a href="{{ route('brandidentity.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'brandidentity_dashboard' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Overview Dashboard
+              </a>
+              <a href="{{ route('brandidentity.assets') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'brandidentity_assets' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Asset Handover Vault
+              </a>
+              <a href="{{ route('brandidentity.tokens') }}" class="block text-[11px] font-medium transition-colors"
+                 :class="currentTab === 'brandidentity_tokens' ? 'text-purple-400 font-bold' : 'text-slate-500 hover:text-slate-300'">
+                Revision Tokens
+              </a>
+            </div>e>
           </div>
         </template>
       </div>
