@@ -731,7 +731,7 @@ function commandCenter() {
     // ── Sidebar nav ──
     navDivisions: [
       { id: 1, name: 'Web Dev',        icon: 'fa-solid fa-code',     color: '#60a5fa', badge: '24', badgeClass: 'bg-blue-500/20 text-blue-300', url: '{{ route('webdev.dashboard') }}', tab: 'webdev' },
-      { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.assets') }}', tab: 'brandidentity' },
+      { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.dashboard') }}', tab: 'brandidentity' },
       { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}', tab: 'performanceads' },
       { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}', tab: 'mockup3d' },
       { id: 5, name: 'Social Media',   icon: 'fa-solid fa-hashtag',  color: '#f472b6', badge: '27', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('socialmedia.dashboard') }}', tab: 'socialmedia' },
