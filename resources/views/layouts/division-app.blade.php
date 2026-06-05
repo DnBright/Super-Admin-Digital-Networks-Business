@@ -42,7 +42,7 @@
                 </div>
                 <div class="flex items-center space-x-4">
                     <!-- Home / SuperAdmin portal link -->
-                    <a href="#" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">
+                    <a href="{{ url('/') }}" class="text-sm font-medium text-slate-400 hover:text-indigo-400 transition-colors duration-200">
                         Portal Super Admin &rarr;
                     </a>
                     <!-- User Menu -->
