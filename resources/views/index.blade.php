@@ -1311,6 +1311,7 @@ function commandCenter() {
     logout() {
       this.isLoggedIn = false;
       localStorage.setItem('dnb_logged_in', 'false');
+      window.location.href = "{{ url('/') }}";
     },
 
     // ── Sidebar state ──
