@@ -52,6 +52,7 @@
        GLOBAL STYLES
   ============================================================ -->
   <style>
+    [x-cloak] { display: none !important; }
     /* ---------- Reset & Base ---------- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { height: 100%; }
@@ -240,9 +241,13 @@
 ============================================================ -->
 <body class="flex h-full overflow-hidden">
 
-  <!-- Mobile overlay -->
-  <div id="overlay" class="fixed inset-0 bg-black/50 z-40 lg:hidden"
-       @click="closeSidebar()"></div>
+  <!-- ==========================================================
+       DASHBOARD CONTAINER (Visible only when logged in)
+  ========================================================== -->
+  <div x-show="isLoggedIn" class="flex h-full w-full overflow-hidden" x-cloak>
+    <!-- Mobile overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 lg:hidden"
+         @click="closeSidebar()"></div>
 
   <!-- ==========================================================
        LEFT SIDEBAR
@@ -253,8 +258,8 @@
     <!-- Sidebar Header -->
     <div class="px-4 pt-5 pb-4 border-b border-slate-800">
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30">
-          <i class="fa-solid fa-network-wired text-white text-xs"></i>
+        <div class="w-8 h-8 rounded-lg bg-white overflow-hidden flex items-center justify-center flex-shrink-0 shadow-lg border border-slate-700">
+          <img src="{{ asset('logo.png') }}" alt="DnB Logo" class="w-7 h-7 object-contain" />
         </div>
         <div class="min-w-0">
           <p class="text-white font-bold text-[13px] tracking-wide leading-tight">DIGITAL NETWORK</p>
@@ -327,7 +332,7 @@
           <p class="text-white text-[12px] font-semibold truncate leading-tight">Budi Santoso</p>
           <p class="text-slate-500 text-[10px] truncate">super@digitalnetwork.id</p>
         </div>
-        <button title="Logout"
+        <button title="Logout" @click="logout()"
                 class="w-7 h-7 rounded-md flex items-center justify-center text-slate-500 hover:text-red-400 hover:bg-red-400/10 transition-colors flex-shrink-0">
           <i class="fa-solid fa-right-from-bracket text-xs"></i>
         </button>
@@ -739,6 +744,77 @@
 
   </div>
   <!-- END MAIN WRAPPER -->
+  </div>
+  <!-- END DASHBOARD CONTAINER -->
+
+  <!-- ==========================================================
+       LOGIN VIEW
+  ========================================================== -->
+  <div x-show="!isLoggedIn" class="min-h-screen w-full flex items-center justify-center bg-slate-950 p-4 relative" x-cloak>
+    <!-- Ambient glowing backgrounds -->
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-10 transition-all duration-300">
+      <!-- Login Header -->
+      <div class="p-6 border-b border-slate-800/80 bg-slate-950/45 text-center flex flex-col items-center">
+        <div class="w-16 h-16 rounded-2xl bg-white overflow-hidden flex items-center justify-center shadow-lg border border-slate-700/50 mb-4">
+          <img src="{{ asset('logo.png') }}" alt="DnB Logo" class="w-12 h-12 object-contain" />
+        </div>
+        <h2 class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent tracking-wide">
+          DNB COMMAND CENTER
+        </h2>
+        <p class="text-slate-400 text-xs mt-1">Masukkan email & password untuk masuk</p>
+      </div>
+
+      <!-- Login Body -->
+      <form @submit.prevent="login()" class="p-6 space-y-4">
+        <!-- Error Alert -->
+        <div x-show="loginError" class="bg-rose-500/10 border border-rose-500/20 text-rose-400 rounded-lg p-3 text-xs leading-relaxed" x-cloak>
+          <div class="flex items-start">
+            <i class="fa-solid fa-triangle-exclamation mt-0.5 mr-2"></i>
+            <span x-text="loginError"></span>
+          </div>
+        </div>
+
+        <!-- Email Field -->
+        <div>
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
+              <i class="fa-regular fa-envelope text-sm"></i>
+            </span>
+            <input type="email" x-model="loginEmail" required placeholder="admin@dnb.com"
+                   class="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors">
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div>
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Password</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-500">
+              <i class="fa-solid fa-lock text-sm"></i>
+            </span>
+            <input type="password" x-model="loginPassword" required placeholder="••••••••"
+                   class="w-full bg-slate-950 border border-slate-800 rounded-lg pl-9 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500 transition-colors">
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm py-2.5 rounded-lg transition-all shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/30 active:scale-[0.99] flex items-center justify-center gap-2">
+          <span>Masuk</span>
+          <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
+        </button>
+      </form>
+
+      <!-- Login Footer -->
+      <div class="px-6 py-4 bg-slate-950/20 border-t border-slate-800/60 text-center">
+        <p class="text-[10px] text-slate-500">Default Credentials: <strong class="text-slate-400">admin@dnb.com</strong> / <strong class="text-slate-400">admin123</strong></p>
+      </div>
+    </div>
+  </div>
 
 <!-- ============================================================
      ALPINE.JS COMPONENT DATA
@@ -747,6 +823,27 @@
 function commandCenter() {
   return {
     clock: '--:--:--',
+    isLoggedIn: false,
+    loginEmail: '',
+    loginPassword: '',
+    loginError: '',
+
+    // ── Auth Actions ──
+    login() {
+      this.loginError = '';
+      if (this.loginEmail === 'admin@dnb.com' && this.loginPassword === 'admin123') {
+        this.isLoggedIn = true;
+        localStorage.setItem('dnb_logged_in', 'true');
+        this.loginEmail = '';
+        this.loginPassword = '';
+      } else {
+        this.loginError = 'Email atau password yang Anda masukkan salah.';
+      }
+    },
+    logout() {
+      this.isLoggedIn = false;
+      localStorage.setItem('dnb_logged_in', 'false');
+    },
 
     // ── Sidebar state ──
     openSidebar() {
@@ -879,6 +976,9 @@ function commandCenter() {
 
     // ── Init ──
     init() {
+      // Check auth state
+      this.isLoggedIn = localStorage.getItem('dnb_logged_in') === 'true';
+
       const tick = () => {
         const now = new Date();
         this.clock = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -888,7 +988,8 @@ function commandCenter() {
 
       // Auto-open sidebar on large screens
       if (window.innerWidth >= 1024) {
-        document.getElementById('sidebar').classList.remove('open');
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) sidebar.classList.remove('open');
       }
     },
   };
