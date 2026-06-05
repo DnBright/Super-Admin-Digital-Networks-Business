@@ -1,12 +1,8 @@
-@extends('layouts.division-app')
+@php
+    $reviews = $reviews ?? collect();
+@endphp
 
-@section('title', 'Review Control | WebDev')
-@section('division-name', 'Web Development')
-@section('division-color-classes', 'bg-blue-500/10 text-blue-400 border border-blue-500/20')
-@section('page-title', 'Review Control Console')
-
-@section('content')
-<div class="space-y-6">
+<div x-show="currentTab === 'webdev_reviews'" class="space-y-6" x-cloak>
     <!-- Success Alert -->
     @if(session('success'))
         <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-4 rounded-xl text-sm flex items-center justify-between">
@@ -87,4 +83,4 @@
         </div>
     </div>
 </div>
-@endsection
+</div>

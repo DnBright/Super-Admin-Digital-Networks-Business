@@ -22,11 +22,15 @@ class ServerManagerController extends Controller
 
         $templates = WebTemplate::orderBy('created_at', 'desc')->take(5)->get();
 
-        return view('Divisions.webdev.dashboard', compact('stats', 'templates'));
+        return view('index', [
+            'tab' => 'webdev_dashboard',
+            'stats' => $stats,
+            'templates' => $templates
+        ]);
     }
 
     public function kanban()
     {
-        return view('Divisions.webdev.kanban-board');
+        return view('index', ['tab' => 'webdev_kanban']);
     }
 }

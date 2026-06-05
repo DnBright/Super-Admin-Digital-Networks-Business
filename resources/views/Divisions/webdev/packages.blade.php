@@ -1,12 +1,8 @@
-@extends('layouts.division-app')
+@php
+    $packages = $packages ?? collect();
+@endphp
 
-@section('title', 'Package Control | WebDev')
-@section('division-name', 'Web Development')
-@section('division-color-classes', 'bg-blue-500/10 text-blue-400 border border-blue-500/20')
-@section('page-title', 'Package Control Console')
-
-@section('content')
-<div class="space-y-6" x-data="{ activeEditId: null }">
+<div x-show="currentTab === 'webdev_packages'" class="space-y-6" x-data="{ activeEditId: null }" x-cloak>
     <!-- Success Alert -->
     @if(session('success'))
         <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-4 rounded-xl text-sm flex items-center justify-between">
@@ -121,4 +117,4 @@
         @endforeach
     </div>
 </div>
-@endsection
+</div>

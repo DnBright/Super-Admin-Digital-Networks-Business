@@ -294,12 +294,44 @@
       <div>
         <p class="section-label mb-3">Divisions</p>
         <template x-for="div in navDivisions" :key="div.id">
-          <a :href="div.url" class="nav-link mt-0.5" :class="div.alert ? 'text-slate-300' : ''">
-            <i :class="div.icon + ' nav-icon'" :style="'color:' + div.color"></i>
-            <span x-text="div.name"></span>
-            <span x-show="div.badge" class="ml-auto text-[10px] font-bold font-mono px-1.5 py-0.5 rounded"
-                  :class="div.badgeClass" x-text="div.badge"></span>
-          </a>
+          <div>
+            <a :href="div.url" class="nav-link mt-0.5" :class="(div.tab && currentTab.startsWith(div.tab)) ? 'active' : ''">
+              <i :class="div.icon + ' nav-icon'" :style="'color:' + div.color"></i>
+              <span x-text="div.name"></span>
+              <span x-show="div.badge" class="ml-auto text-[10px] font-bold font-mono px-1.5 py-0.5 rounded"
+                    :class="div.badgeClass" x-text="div.badge"></span>
+            </a>
+            
+            <!-- Web Dev Submenu (shown only inside Super Admin layout when in Web Dev tabs) -->
+            <template x-if="div.id === 1 && currentTab.startsWith('webdev_')">
+              <div class="pl-6 pr-2 py-1.5 space-y-1.5 bg-slate-950/45 border-l-2 border-blue-500/30 mt-1 rounded-r-md">
+                <a href="{{ route('webdev.dashboard') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'webdev_dashboard' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-350'">
+                  Overview Dashboard
+                </a>
+                <a href="{{ route('webdev.kanban') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'webdev_kanban' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
+                  Kanban Workboard
+                </a>
+                <a href="{{ route('webdev.templates.index') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'webdev_templates' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
+                  Template Control
+                </a>
+                <a href="{{ route('webdev.packages.index') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'webdev_packages' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
+                  Package Control
+                </a>
+                <a href="{{ route('webdev.reviews.index') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'webdev_reviews' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
+                  Review Control
+                </a>
+                <a href="{{ route('webdev.chat.index') }}" class="block text-[11px] font-medium transition-colors"
+                   :class="currentTab === 'webdev_chat' ? 'text-blue-400 font-bold' : 'text-slate-500 hover:text-slate-355'">
+                  Live Chat Inbox
+                </a>
+              </div>
+            </template>
+          </div>
         </template>
       </div>
 
@@ -361,9 +393,23 @@
 
         <!-- Breadcrumb / Page title -->
         <div class="flex items-center gap-2 min-w-0">
-          <span class="text-slate-400 text-xs hidden sm:block">Dashboard</span>
+          <span class="text-slate-400 text-xs hidden sm:block" x-text="currentTab.startsWith('webdev_') ? 'Web Dev' : 'Dashboard'">Dashboard</span>
           <i class="fa-solid fa-chevron-right text-[9px] text-slate-300 hidden sm:block"></i>
-          <h1 class="text-slate-800 font-bold text-[14px] leading-tight truncate">Global Command Overview</h1>
+          <h1 class="text-slate-800 font-bold text-[14px] leading-tight truncate"
+              x-text="currentTab === 'global_command' ? 'Global Command Overview' :
+                      currentTab === 'access_control' ? 'Access Control Panel' :
+                      currentTab === 'system_settings' ? 'System Settings Panel' :
+                      currentTab === 'revenue_report' ? 'Revenue Report' :
+                      currentTab === 'billing_invoice' ? 'Billing & Invoice' :
+                      currentTab === 'client_directory' ? 'Client Directory' :
+                      currentTab === 'webdev_dashboard' ? 'Overview Console' :
+                      currentTab === 'webdev_kanban' ? 'Kanban Workboard' :
+                      currentTab === 'webdev_templates' ? 'Template Control' :
+                      currentTab === 'webdev_packages' ? 'Package Control' :
+                      currentTab === 'webdev_reviews' ? 'Review Control' :
+                      currentTab === 'webdev_chat' ? 'Live Chat Inbox' : 'Console'">
+            Global Command Overview
+          </h1>
         </div>
 
         <div class="flex-1"></div>
@@ -427,6 +473,14 @@
       @include('Analytics.billing')
 
       @include('Analytics.clients')
+
+      {{-- Web Dev Division Tab Integrations --}}
+      @include('Divisions.webdev.dashboard')
+      @include('Divisions.webdev.kanban-board')
+      @include('Divisions.webdev.templates')
+      @include('Divisions.webdev.packages')
+      @include('Divisions.webdev.reviews')
+      @include('Divisions.webdev.chat')
 
       <!-- Bottom spacer -->
       <div class="h-2"></div>
@@ -676,12 +730,12 @@ function commandCenter() {
 
     // ── Sidebar nav ──
     navDivisions: [
-      { id: 1, name: 'Web Dev',        icon: 'fa-solid fa-code',     color: '#60a5fa', badge: '24', badgeClass: 'bg-blue-500/20 text-blue-300', url: '{{ route('webdev.dashboard') }}' },
-      { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.assets') }}' },
-      { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}' },
-      { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}' },
-      { id: 5, name: 'Social Media',   icon: 'fa-solid fa-hashtag',  color: '#f472b6', badge: '27', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('socialmedia.dashboard') }}' },
-      { id: 6, name: 'Video Prod',     icon: 'fa-solid fa-film',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('videoproduction.dashboard') }}' },
+      { id: 1, name: 'Web Dev',        icon: 'fa-solid fa-code',     color: '#60a5fa', badge: '24', badgeClass: 'bg-blue-500/20 text-blue-300', url: '{{ route('webdev.dashboard') }}', tab: 'webdev' },
+      { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.assets') }}', tab: 'brandidentity' },
+      { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}', tab: 'performanceads' },
+      { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}', tab: 'mockup3d' },
+      { id: 5, name: 'Social Media',   icon: 'fa-solid fa-hashtag',  color: '#f472b6', badge: '27', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('socialmedia.dashboard') }}', tab: 'socialmedia' },
+      { id: 6, name: 'Video Prod',     icon: 'fa-solid fa-film',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('videoproduction.dashboard') }}', tab: 'videoproduction' },
     ],
 
     // ── Sparkline ──

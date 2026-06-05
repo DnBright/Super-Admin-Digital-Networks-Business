@@ -1,12 +1,11 @@
-@extends('layouts.division-app')
+@php
+    $sessions = $sessions ?? collect();
+    $activeSessionId = $activeSessionId ?? null;
+    $activeMessages = $activeMessages ?? collect();
+    $activeSession = $activeSession ?? null;
+@endphp
 
-@section('title', 'Live Chat Inbox | WebDev')
-@section('division-name', 'Web Development')
-@section('division-color-classes', 'bg-blue-500/10 text-blue-400 border border-blue-500/20')
-@section('page-title', 'Live Chat Console')
-
-@section('content')
-<div class="space-y-4">
+<div x-show="currentTab === 'webdev_chat'" class="space-y-4" x-cloak>
 
     {{-- Success Alert --}}
     @if(session('success'))
@@ -260,4 +259,4 @@
         }
     });
 </script>
-@endsection
+</div>

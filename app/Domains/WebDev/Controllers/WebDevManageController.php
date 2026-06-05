@@ -19,7 +19,10 @@ class WebDevManageController extends Controller
     public function templatesIndex()
     {
         $templates = WebTemplate::all();
-        return view('Divisions.webdev.templates', compact('templates'));
+        return view('index', [
+            'tab' => 'webdev_templates',
+            'templates' => $templates
+        ]);
     }
 
     public function templatesStore(Request $request)
@@ -123,7 +126,10 @@ class WebDevManageController extends Controller
     public function packagesIndex()
     {
         $packages = WebPackage::all();
-        return view('Divisions.webdev.packages', compact('packages'));
+        return view('index', [
+            'tab' => 'webdev_packages',
+            'packages' => $packages
+        ]);
     }
 
     public function packagesUpdate(Request $request, $id)
@@ -159,7 +165,10 @@ class WebDevManageController extends Controller
     public function reviewsIndex()
     {
         $reviews = WebReview::with('webTemplate')->get();
-        return view('Divisions.webdev.reviews', compact('reviews'));
+        return view('index', [
+            'tab' => 'webdev_reviews',
+            'reviews' => $reviews
+        ]);
     }
 
     public function reviewsToggle($id)
@@ -232,12 +241,13 @@ class WebDevManageController extends Controller
             return redirect()->route('webdev.chat.index', ['session_id' => $activeSessionId]);
         }
 
-        return view('Divisions.webdev.chat', compact(
-            'sessions',
-            'activeSessionId',
-            'activeMessages',
-            'activeSession'
-        ));
+        return view('index', [
+            'tab' => 'webdev_chat',
+            'sessions' => $sessions,
+            'activeSessionId' => $activeSessionId,
+            'activeMessages' => $activeMessages,
+            'activeSession' => $activeSession
+        ]);
     }
 
     public function chatSend(Request $request)
