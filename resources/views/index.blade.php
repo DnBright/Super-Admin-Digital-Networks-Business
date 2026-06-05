@@ -1221,6 +1221,23 @@ function commandCenter() {
     magicLinkDiv: '',
     generatedLink: '',
 
+    // ── System Settings State ──
+    divisionsConfig: JSON.parse(localStorage.getItem('dnb_divisions_config')) || [
+      { id: 1, name: 'Web Dev', key: 'WEB_DEV', color: '#60a5fa', domain: 'jasa-website.dnb.com', dbName: 'dnb_webdev', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/webdev' },
+      { id: 2, name: 'Brand Identity', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'jasa-logo.dnb.com', dbName: 'dnb_brand_id', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/brand-id' },
+      { id: 3, name: 'Perf. Ads', key: 'PERF_ADS', color: '#fb923c', domain: 'jasa-advertising.dnb.com', dbName: 'dnb_perf_ads', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/perf-ads' },
+      { id: 4, name: '3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'jasa-mockup.dnb.com', dbName: 'dnb_3d_mockup', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/3d-mockup' },
+      { id: 5, name: 'Social Media', key: 'SOCIAL_MEDIA', color: '#f472b6', domain: 'jasa-socialmedia.dnb.com', dbName: 'dnb_socmed', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/social-media' },
+      { id: 6, name: 'Video Prod', key: 'VIDEO_PRODUCTION', color: '#f87171', domain: 'jasa-video.dnb.com', dbName: 'dnb_video_prod', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/video-production' }
+    ],
+    cpanelApiToken: localStorage.getItem('dnb_cpanel_token') || '',
+    metaAdsToken: localStorage.getItem('dnb_meta_token') || '',
+    googleAdsToken: localStorage.getItem('dnb_google_token') || '',
+    smtpHost: localStorage.getItem('dnb_smtp_host') || 'smtp.mailtrap.io',
+    smtpPort: localStorage.getItem('dnb_smtp_port') || '587',
+    smtpUser: localStorage.getItem('dnb_smtp_user') || 'dnb-system-notif',
+    smtpPassword: localStorage.getItem('dnb_smtp_password') || '',
+
     subAdmins: [
       { id: 1, name: 'Adi Wijaya', email: 'adi.web@dnb.com', initials: 'AW', division: 'Web Dev', divBadge: 'bg-blue-100 text-blue-700', role: 'Manage Project, VPS Write', status: 'active' },
       { id: 2, name: 'Rian Putra', email: 'rian.brand@dnb.com', initials: 'RP', division: 'Brand Identity', divBadge: 'bg-purple-100 text-purple-700', role: 'Upload Logo Asset, Issue Token', status: 'active' },
@@ -1236,6 +1253,43 @@ function commandCenter() {
       }
       const token = Math.random().toString(36).substring(2, 12).toUpperCase();
       this.generatedLink = `https://dnb.com/portal/guest?client=${encodeURIComponent(this.magicLinkClient)}&div=${encodeURIComponent(this.magicLinkDiv)}&token=${token}`;
+    },
+    
+    // ── System Settings Actions ──
+    testDbConnection(id) {
+      const div = this.divisionsConfig.find(d => d.id === id);
+      if (!div) return;
+      
+      const spinner = document.getElementById('spinner-' + id);
+      const plug = document.getElementById('plug-' + id);
+      if (spinner && plug) {
+        spinner.classList.remove('hidden');
+        plug.classList.add('hidden');
+      }
+
+      setTimeout(() => {
+        if (spinner && plug) {
+          spinner.classList.add('hidden');
+          plug.classList.remove('hidden');
+        }
+        alert(`Koneksi database ke "${div.dbName}" (${div.name}) Berhasil!\nHost: localhost\nUser: ${div.dbUser || 'root'}\nStatus: Active & Connected`);
+      }, 1000);
+    },
+    saveDivisionConfig(id) {
+      const div = this.divisionsConfig.find(d => d.id === id);
+      if (!div) return;
+      localStorage.setItem('dnb_divisions_config', JSON.stringify(this.divisionsConfig));
+      alert(`Konfigurasi Node "${div.name}" berhasil disimpan.`);
+    },
+    saveGlobalSettings() {
+      localStorage.setItem('dnb_cpanel_token', this.cpanelApiToken);
+      localStorage.setItem('dnb_meta_token', this.metaAdsToken);
+      localStorage.setItem('dnb_google_token', this.googleAdsToken);
+      localStorage.setItem('dnb_smtp_host', this.smtpHost);
+      localStorage.setItem('dnb_smtp_port', this.smtpPort);
+      localStorage.setItem('dnb_smtp_user', this.smtpUser);
+      localStorage.setItem('dnb_smtp_password', this.smtpPassword);
+      alert('Pengaturan Global Third-Party Integrations & SMTP berhasil disimpan.');
     },
     isLoggedIn: false,
     loginEmail: '',
