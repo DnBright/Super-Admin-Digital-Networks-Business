@@ -8,7 +8,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Placeholder return or view
-        return response()->json(['message' => 'Welcome to Super Admin Dashboard']);
+        return view('superadmin.dashboard');
     }
 }

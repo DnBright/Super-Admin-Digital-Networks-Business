@@ -8,6 +8,6 @@ class AssetVaultController extends Controller
 {
     public function index()
     {
-        return response()->json(['message' => 'BrandIdentity Asset Vault']);
+        return view('brandidentity.dashboard');
     }
 }

@@ -8,6 +8,6 @@ class ClientMasterController extends Controller
 {
     public function index()
     {
-        return response()->json(['message' => 'List of clients across all divisions']);
+        return view('superadmin.clients.index');
     }
 }
