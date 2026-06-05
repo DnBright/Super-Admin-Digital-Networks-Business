@@ -406,7 +406,14 @@
 
         <!-- Breadcrumb / Page title -->
         <div class="flex items-center gap-2 min-w-0">
-          <span class="text-slate-400 text-xs hidden sm:block" x-text="currentTab.startsWith('webdev_') ? 'Web Dev' : (currentTab.startsWith('brandidentity_') ? 'Brand Identity' : 'Dashboard')">Dashboard</span>
+          <span class="text-slate-400 text-xs hidden sm:block" x-text="
+              currentTab.startsWith('webdev_') ? 'Web Dev' : 
+              currentTab.startsWith('brandidentity_') ? 'Brand Identity' : 
+              currentTab.startsWith('performanceads_') ? 'Performance Ads' :
+              currentTab.startsWith('mockup3d_') ? '3D & Arsitek' :
+              currentTab.startsWith('socialmedia_') ? 'Social Media' :
+              currentTab.startsWith('videoproduction_') ? 'Video & Motion' :
+              'Dashboard'">Dashboard</span>
           <i class="fa-solid fa-chevron-right text-[9px] text-slate-300 hidden sm:block"></i>
           <h1 class="text-slate-800 font-bold text-[14px] leading-tight truncate"
               x-text="currentTab === 'global_command' ? 'Global Command Overview' :
@@ -423,7 +430,11 @@
                       currentTab === 'webdev_chat' ? 'Live Chat Inbox' :
                       currentTab === 'brandidentity_dashboard' ? 'Overview Dashboard' :
                       currentTab === 'brandidentity_assets' ? 'Asset Handover Vault' :
-                      currentTab === 'brandidentity_tokens' ? 'Revision Tokens Manager' : 'Console'">
+                      currentTab === 'brandidentity_tokens' ? 'Revision Tokens Manager' :
+                      currentTab === 'performanceads_dashboard' ? 'Overview Dashboard' :
+                      currentTab === 'mockup3d_dashboard' ? 'Overview Dashboard' :
+                      currentTab === 'socialmedia_dashboard' ? 'Overview Dashboard' :
+                      currentTab === 'videoproduction_dashboard' ? 'Overview Dashboard' : 'Console'">
             Global Command Overview
           </h1>
         </div>
@@ -502,6 +513,18 @@
       @include('Divisions.brandidentity.dashboard')
       @include('Divisions.brandidentity.assets')
       @include('Divisions.brandidentity.tokens')
+
+      {{-- Performance Ads Division Tab Integration --}}
+      @include('Divisions.performanceads.dashboard')
+
+      {{-- 3D Mockup Division Tab Integration --}}
+      @include('Divisions.mockup3d.dashboard')
+
+      {{-- Social Media Division Tab Integration --}}
+      @include('Divisions.socialmedia.dashboard')
+
+      {{-- Video Production Division Tab Integration --}}
+      @include('Divisions.videoproduction.dashboard')
 
       <!-- Bottom spacer -->
       <div class="h-2"></div>
