@@ -1,12 +1,9 @@
-@extends('layouts.division-app')
+@php
+    $stats = $stats ?? ['total_templates' => 0, 'total_packages' => 0, 'total_reviews' => 0, 'pending_reviews' => 0, 'unread_chats' => 0];
+    $templates = $templates ?? collect();
+@endphp
 
-@section('title', 'WebDev Console')
-@section('division-name', 'Web Development')
-@section('division-color-classes', 'bg-blue-500/10 text-blue-400 border border-blue-500/20')
-@section('page-title', 'Overview Console')
-
-@section('content')
-<div class="space-y-6">
+<div x-show="currentTab === 'webdev_dashboard'" class="space-y-6" x-cloak>
     <!-- Success Alert -->
     @if(session('success'))
         <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-4 rounded-xl text-sm flex items-center justify-between">
@@ -171,4 +168,3 @@
         </div>
     </div>
 </div>
-@endsection
