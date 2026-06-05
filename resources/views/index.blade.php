@@ -306,15 +306,15 @@
       <!-- Analytics -->
       <div>
         <p class="section-label mb-3">Analytics</p>
-        <a class="nav-link">
+        <a href="{{ url('/revenue-report') }}" class="nav-link" :class="currentTab === 'revenue_report' ? 'active' : ''">
           <i class="fa-solid fa-chart-line nav-icon"></i>
           <span>Revenue Report</span>
         </a>
-        <a class="nav-link mt-0.5">
+        <a href="{{ url('/billing-invoice') }}" class="nav-link mt-0.5" :class="currentTab === 'billing_invoice' ? 'active' : ''">
           <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
           <span>Billing & Invoice</span>
         </a>
-        <a class="nav-link mt-0.5">
+        <a href="{{ url('/client-directory') }}" class="nav-link mt-0.5" :class="currentTab === 'client_directory' ? 'active' : ''">
           <i class="fa-solid fa-users nav-icon"></i>
           <span>Client Directory</span>
         </a>
@@ -1220,6 +1220,27 @@ function commandCenter() {
     magicLinkClient: '',
     magicLinkDiv: '',
     generatedLink: '',
+    
+    // ── Analytics & Billing State ──
+    invoices: [
+      { id: 1, invoiceNo: 'INV-2026-001', clientName: 'PT Maju Bersama', division: 'Web Dev', amount: 'Rp 45.000.000', dueDate: '2026-06-15', status: 'paid' },
+      { id: 2, invoiceNo: 'INV-2026-002', clientName: 'CV Kreasi Digital', division: 'Video Prod', amount: 'Rp 28.500.000', dueDate: '2026-05-20', status: 'overdue' },
+      { id: 3, invoiceNo: 'INV-2026-003', clientName: 'Startup Nusantara', division: 'Perf. Ads', amount: 'Rp 15.000.000', dueDate: '2026-06-30', status: 'unpaid' },
+      { id: 4, invoiceNo: 'INV-2026-004', clientName: 'PT Maju Bersama', division: 'Brand Identity', amount: 'Rp 12.000.000', dueDate: '2026-06-05', status: 'paid' },
+      { id: 5, invoiceNo: 'INV-2026-005', clientName: 'Nusantara Global', division: '3D Mockup', amount: 'Rp 35.000.000', dueDate: '2026-07-10', status: 'unpaid' }
+    ],
+    newInvoiceClient: '',
+    newInvoiceDiv: '',
+    newInvoiceAmount: '',
+    newInvoiceDueDate: '',
+    billingFilter: 'all',
+    clientDirectory: [
+      { id: 1, name: 'PT Maju Bersama', contact: 'Budi Santoso', email: 'budi@majubersama.com', phone: '+62 811-2233-4455', services: ['Web Dev', 'Brand Identity', 'Perf. Ads', '3D Mockup', 'Social Media'], manager: 'Adi Wijaya', status: 'active', bg: 'bg-blue-500/20 text-blue-300' },
+      { id: 2, name: 'CV Kreasi Digital', contact: 'Dewi Sartika', email: 'dewi@kreasidigital.co.id', phone: '+62 812-9988-7766', services: ['Video Prod', 'Perf. Ads'], manager: 'Sinta Devi', status: 'active', bg: 'bg-purple-500/20 text-purple-300' },
+      { id: 3, name: 'Startup Nusantara', contact: 'Eko Prasetyo', email: 'eko@startupnusantara.com', phone: '+62 813-5544-3322', services: ['Web Dev', 'Brand Identity', '3D Mockup'], manager: 'Rian Putra', status: 'active', bg: 'bg-orange-500/20 text-orange-300' },
+      { id: 4, name: 'Nusantara Global', contact: 'Lina Maria', email: 'lina@nusantaraglobal.com', phone: '+62 811-7788-9900', services: ['3D Mockup', 'Social Media', 'Video Prod'], manager: 'Doni Setiawan', status: 'active', bg: 'bg-cyan-500/20 text-cyan-300' },
+      { id: 5, name: 'RM Padang Indah', contact: 'Haji Ahmad', email: 'ahmad@padangindah.com', phone: '+62 852-1122-3344', services: ['Social Media'], manager: 'Lani Marlina', status: 'suspended', bg: 'bg-pink-500/20 text-pink-300' }
+    ],
 
     // ── System Settings State ──
     divisionsConfig: JSON.parse(localStorage.getItem('dnb_divisions_config')) || [
@@ -1290,6 +1311,35 @@ function commandCenter() {
       localStorage.setItem('dnb_smtp_user', this.smtpUser);
       localStorage.setItem('dnb_smtp_password', this.smtpPassword);
       alert('Pengaturan Global Third-Party Integrations & SMTP berhasil disimpan.');
+    },
+    createInvoice() {
+      if (!this.newInvoiceClient || !this.newInvoiceDiv || !this.newInvoiceAmount || !this.newInvoiceDueDate) {
+        alert('Mohon lengkapi semua input data invoice.');
+        return;
+      }
+      
+      const nextId = this.invoices.length + 1;
+      const formattedAmount = 'Rp ' + Number(this.newInvoiceAmount).toLocaleString('id-ID');
+      const invoiceNo = `INV-2026-0${nextId}`;
+
+      const newInv = {
+        id: nextId,
+        invoiceNo: invoiceNo,
+        clientName: this.newInvoiceClient,
+        division: this.newInvoiceDiv,
+        amount: formattedAmount,
+        dueDate: this.newInvoiceDueDate,
+        status: 'unpaid'
+      };
+
+      this.invoices.unshift(newInv);
+      
+      this.newInvoiceClient = '';
+      this.newInvoiceDiv = '';
+      this.newInvoiceAmount = '';
+      this.newInvoiceDueDate = '';
+
+      alert(`Invoice ${invoiceNo} berhasil dibuat.`);
     },
     isLoggedIn: false,
     loginEmail: '',

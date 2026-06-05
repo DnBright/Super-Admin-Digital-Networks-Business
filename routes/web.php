@@ -20,6 +20,18 @@ Route::get('/system-settings', function () {
     return view('index', ['tab' => 'system_settings']);
 });
 
+Route::get('/revenue-report', function () {
+    return view('index', ['tab' => 'revenue_report']);
+});
+
+Route::get('/billing-invoice', function () {
+    return view('index', ['tab' => 'billing_invoice']);
+});
+
+Route::get('/client-directory', function () {
+    return view('index', ['tab' => 'client_directory']);
+});
+
 // Load sub-route files from the web/ directory
 Route::middleware('web')->group(function () {
     require __DIR__ . '/web/auth.php';
