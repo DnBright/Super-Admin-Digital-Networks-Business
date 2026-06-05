@@ -6,161 +6,174 @@
 <div x-show="currentTab === 'webdev_dashboard'" class="space-y-6" x-cloak>
     <!-- Success Alert -->
     @if(session('success'))
-        <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-4 rounded-xl text-sm flex items-center justify-between">
+        <div class="bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 p-4 rounded-xl text-sm flex items-center justify-between">
             <div class="flex items-center gap-2">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <span>{{ session('success') }}</span>
+                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="font-medium">{{ session('success') }}</span>
             </div>
         </div>
     @endif
 
     <!-- WebDev Dynamic Quick Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <!-- Stat 1: Templates -->
-        <div class="glass rounded-xl p-5 flex items-center justify-between">
+        <div class="card-hover bg-white rounded-xl border border-slate-200 shadow-card p-5 flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Active Templates</span>
-                <h3 class="text-3xl font-bold text-slate-100 mt-1">{{ $stats['total_templates'] }}</h3>
-                <p class="text-xs text-slate-500 mt-1">Ready for client preview</p>
+                <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Active Templates</p>
+                <h3 class="text-3xl font-black text-slate-900 mt-1 leading-none">{{ $stats['total_templates'] }}</h3>
+                <p class="text-xs text-slate-500 mt-2">Ready for UMKM preview</p>
             </div>
-            <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-lg flex items-center justify-center border border-blue-500/20">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <div class="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-laptop-code text-blue-500 text-sm"></i>
             </div>
         </div>
 
         <!-- Stat 2: Packages -->
-        <div class="glass rounded-xl p-5 flex items-center justify-between">
+        <div class="card-hover bg-white rounded-xl border border-slate-200 shadow-card p-5 flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Pricing Plans</span>
-                <h3 class="text-3xl font-bold text-slate-100 mt-1">{{ $stats['total_packages'] }}</h3>
-                <p class="text-xs text-slate-500 mt-1">Installments support enabled</p>
+                <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Pricing Plans</p>
+                <h3 class="text-3xl font-black text-slate-900 mt-1 leading-none">{{ $stats['total_packages'] }}</h3>
+                <p class="text-xs text-slate-500 mt-2">Cicilan support enabled</p>
             </div>
-            <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-lg flex items-center justify-center border border-indigo-500/20">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-tags text-indigo-500 text-sm"></i>
             </div>
         </div>
 
         <!-- Stat 3: Reviews -->
-        <div class="glass rounded-xl p-5 flex items-center justify-between">
+        <div class="card-hover bg-white rounded-xl border border-slate-200 shadow-card p-5 flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">User Reviews</span>
-                <h3 class="text-3xl font-bold text-slate-100 mt-1">{{ $stats['total_reviews'] }}</h3>
-                <p class="text-xs text-amber-400 mt-1">{{ $stats['pending_reviews'] }} pending approval</p>
+                <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">User Reviews</p>
+                <h3 class="text-3xl font-black text-slate-900 mt-1 leading-none">{{ $stats['total_reviews'] }}</h3>
+                <p class="text-xs text-amber-600 font-semibold mt-2">
+                    {{ $stats['pending_reviews'] }} pending approval
+                </p>
             </div>
-            <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-lg flex items-center justify-center border border-amber-500/20">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
+            <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-star text-amber-550 text-sm"></i>
             </div>
         </div>
 
         <!-- Stat 4: Chat queue -->
-        <div class="glass rounded-xl p-5 flex items-center justify-between">
+        <div class="card-hover bg-white rounded-xl border border-slate-200 shadow-card p-5 flex items-center justify-between">
             <div>
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Unread Chats</span>
-                <h3 class="text-3xl font-bold text-slate-100 mt-1">{{ $stats['unread_chats'] }}</h3>
-                <p class="text-xs text-rose-400 mt-1">Requires immediate reply</p>
+                <p class="text-[11px] font-bold uppercase tracking-widest text-slate-400">Unread Chats</p>
+                <h3 class="text-3xl font-black text-slate-900 mt-1 leading-none">{{ $stats['unread_chats'] }}</h3>
+                <p class="text-xs text-rose-650 font-semibold mt-2">Requires fast reply</p>
             </div>
-            <div class="w-12 h-12 bg-rose-500/10 text-rose-400 rounded-lg flex items-center justify-center border border-rose-500/20">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+            <div class="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-comments text-rose-500 text-sm"></i>
             </div>
         </div>
     </div>
 
-    <!-- Website Control Portal Shortcuts -->
+    <!-- Website Control Portal Shortcuts & Database Connections Info -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- DB Connections Info -->
-        <div class="glass rounded-xl p-6 space-y-3">
-            <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wider flex items-center gap-2">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-card p-6 space-y-4">
+            <h3 class="text-[13px] font-bold text-slate-850 flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 Web-Dev Cross Database Nodes
             </h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
+            <p class="text-xs text-slate-500 leading-relaxed">
                 Super Admin terhubung langsung ke database SQLite proyek **JasaBuatWebsite**. Perubahan apa pun pada template, paket harga, atau chat balasan di panel ini akan langsung termanifestasi secara real-time pada landing page utama.
             </p>
-            <div class="bg-slate-950/40 border border-slate-800 p-3 rounded-lg space-y-2 text-xs font-mono text-slate-400">
+            <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-lg space-y-2 text-xs font-mono text-slate-600">
                 <div class="flex justify-between">
                     <span>Active Connection:</span>
-                    <span class="text-indigo-400">webdev</span>
+                    <span class="text-brand-600 font-bold">webdev</span>
                 </div>
                 <div class="flex justify-between">
                     <span>Driver Type:</span>
-                    <span class="text-indigo-400">SQLite PDO</span>
+                    <span class="text-slate-700 font-bold">SQLite PDO</span>
                 </div>
                 <div class="flex justify-between">
                     <span>Target DB File:</span>
-                    <span class="text-indigo-400 select-all">database.sqlite</span>
+                    <span class="text-slate-700 font-bold select-all">database.sqlite</span>
                 </div>
             </div>
         </div>
 
         <!-- System Administration links -->
-        <div class="glass rounded-xl p-6 flex flex-col justify-between">
-            <h3 class="text-sm font-bold text-slate-300 uppercase tracking-wider">Admin Quick Shortcuts</h3>
-            <div class="grid grid-cols-2 gap-4 mt-3">
-                <a href="{{ route('webdev.templates.index') }}" class="flex items-center gap-3 p-3 bg-slate-800/40 hover:bg-slate-800/80 border border-slate-700/30 rounded-lg text-xs font-semibold text-slate-200 transition-colors">
-                    <span class="p-1.5 bg-blue-500/10 text-blue-400 rounded"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"></path></svg></span>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-card p-6 flex flex-col justify-between">
+            <h3 class="text-[13px] font-bold text-slate-850">Admin Quick Shortcuts</h3>
+            <div class="grid grid-cols-2 gap-4 mt-4">
+                <a href="{{ route('webdev.templates.index') }}" class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition-colors shadow-sm">
+                    <span class="p-1.5 bg-blue-50 text-blue-500 rounded-lg border border-blue-100"><i class="fa-solid fa-palette text-xs"></i></span>
                     Manage Templates
                 </a>
-                <a href="{{ route('webdev.packages.index') }}" class="flex items-center gap-3 p-3 bg-slate-800/40 hover:bg-slate-800/80 border border-slate-700/30 rounded-lg text-xs font-semibold text-slate-200 transition-colors">
-                    <span class="p-1.5 bg-indigo-500/10 text-indigo-400 rounded"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg></span>
+                <a href="{{ route('webdev.packages.index') }}" class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition-colors shadow-sm">
+                    <span class="p-1.5 bg-indigo-50 text-indigo-500 rounded-lg border border-indigo-100"><i class="fa-solid fa-tags text-xs"></i></span>
                     Adjust Prices
                 </a>
-                <a href="{{ route('webdev.reviews.index') }}" class="flex items-center gap-3 p-3 bg-slate-800/40 hover:bg-slate-800/80 border border-slate-700/30 rounded-lg text-xs font-semibold text-slate-200 transition-colors">
-                    <span class="p-1.5 bg-amber-500/10 text-amber-400 rounded"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg></span>
+                <a href="{{ route('webdev.reviews.index') }}" class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition-colors shadow-sm">
+                    <span class="p-1.5 bg-amber-50 text-amber-500 rounded-lg border border-amber-100"><i class="fa-solid fa-star text-xs"></i></span>
                     Client Reviews
                 </a>
-                <a href="{{ route('webdev.chat.index') }}" class="flex items-center gap-3 p-3 bg-slate-800/40 hover:bg-slate-800/80 border border-slate-700/30 rounded-lg text-xs font-semibold text-slate-200 transition-colors">
-                    <span class="p-1.5 bg-rose-500/10 text-rose-400 rounded"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg></span>
+                <a href="{{ route('webdev.chat.index') }}" class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 transition-colors shadow-sm">
+                    <span class="p-1.5 bg-rose-50 text-rose-500 rounded-lg border border-rose-100"><i class="fa-solid fa-comments text-xs"></i></span>
                     Live Chat Messages
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Active Projects Table -->
-    <div class="glass rounded-xl p-6 space-y-4">
-        <div class="flex items-center justify-between">
-            <h3 class="text-base font-bold text-slate-200 uppercase tracking-wider">JasaBuatWebsite Design Templates</h3>
-            <a href="{{ route('webdev.templates.index') }}" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-3.5 py-1.5 rounded-lg transition-colors border border-blue-500/30 shadow">
-                + Add Template
+    <!-- Active Templates Table -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-card overflow-hidden">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+            <div class="flex items-center gap-3">
+                <div class="w-7 h-7 rounded-lg bg-slate-900 flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-images text-white text-xs"></i>
+                </div>
+                <div>
+                    <h2 class="text-[13px] font-bold text-slate-850">JasaBuatWebsite Design Templates</h2>
+                    <p class="text-[11px] text-slate-400">Daftar desain web yang aktif di landing page</p>
+                </div>
+            </div>
+            <a href="{{ route('webdev.templates.index') }}" class="text-[11px] font-medium text-slate-650 hover:text-slate-800 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-100 transition-colors flex items-center gap-1.5">
+                <i class="fa-solid fa-plus text-[10px]"></i>Add Template
             </a>
         </div>
+
+        <!-- Table Content -->
         <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm divide-y divide-slate-800">
+            <table class="w-full text-left text-sm">
                 <thead>
-                    <tr class="text-xs font-bold text-slate-400 uppercase tracking-widest pb-3">
-                        <th class="py-3">Thumbnail</th>
-                        <th class="py-3">Template Name</th>
-                        <th class="py-3">Category</th>
-                        <th class="py-3">Rating</th>
-                        <th class="py-3 text-right">Action</th>
+                    <tr class="bg-slate-50 border-b border-slate-100 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                        <th class="px-5 py-3">Thumbnail</th>
+                        <th class="px-4 py-3">Template Name</th>
+                        <th class="px-4 py-3">Category</th>
+                        <th class="px-4 py-3">Rating</th>
+                        <th class="px-5 py-3 text-right">Action</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-800/60">
+                <tbody class="divide-y divide-slate-100">
                     @forelse($templates as $template)
-                        <tr class="hover:bg-slate-800/20 transition-colors">
-                            <td class="py-3.5">
+                        <tr class="trow transition-colors">
+                            <td class="px-5 py-3">
                                 <img src="/Users/mac/Project Website/Kerja/jasabuatwebsite/public/{{ $template->image }}" 
                                      alt="{{ $template->name }}" 
-                                     class="w-12 h-12 object-cover rounded-lg border border-slate-700/50 onerror-fallback"
+                                     class="w-12 h-9 object-cover rounded-lg border border-slate-200 shadow-sm"
                                      onerror="this.src='{{ asset($template->image) }}'">
                             </td>
-                            <td class="py-3.5 font-semibold text-slate-200">{{ $template->name }}</td>
-                            <td class="py-3.5 font-mono text-xs text-slate-400">{{ $template->category }}</td>
-                            <td class="py-3.5">
-                                <span class="flex items-center text-amber-400 gap-1 text-xs font-bold">
+                            <td class="px-4 py-3 font-semibold text-slate-800">{{ $template->name }}</td>
+                            <td class="px-4 py-3 font-mono text-[11px] text-slate-500">{{ $template->category }}</td>
+                            <td class="px-4 py-3">
+                                <span class="flex items-center text-amber-550 gap-1 text-xs font-bold">
                                     ⭐ {{ $template->rating }}
-                                    <span class="text-slate-500 font-normal">({{ $template->reviews_count }} reviews)</span>
+                                    <span class="text-slate-400 font-normal">({{ $template->reviews_count }} reviews)</span>
                                 </span>
                             </td>
-                            <td class="py-3.5 text-right">
-                                <a href="{{ route('webdev.templates.index') }}" class="text-xs font-bold text-blue-400 hover:text-blue-300">
-                                    Manage &rarr;
+                            <td class="px-5 py-3 text-right">
+                                <a href="{{ route('webdev.templates.index') }}" class="inline-flex items-center gap-1 text-[11px] font-medium text-brand-600 hover:text-brand-700 hover:underline">
+                                    Manage <i class="fa-solid fa-arrow-right text-[9px]"></i>
                                 </a>
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="py-6 text-center text-slate-500 text-xs font-medium">No templates found in JasaBuatWebsite DB.</td>
+                            <td colspan="5" class="px-5 py-8 text-center text-slate-450 text-xs font-medium bg-slate-50/10">No templates found in JasaBuatWebsite DB.</td>
                         </tr>
                     @endforelse
                 </tbody>

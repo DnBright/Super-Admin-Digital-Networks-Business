@@ -38,7 +38,7 @@
                     Web Development
                 </a>
                 <!-- Division 2 -->
-                <a href="{{ route('brandidentity.assets') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('brandidentity.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-purple-500 rounded-full mr-3"></span>
                     Brand Identity
                 </a>
