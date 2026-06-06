@@ -790,7 +790,8 @@ function commandCenter() {
     // ── Auth Actions ──
     login() {
       this.loginError = '';
-      if (this.loginEmail === 'admin@dnb.com' && this.loginPassword === 'admin123') {
+      if ((this.loginEmail === 'admin@dnb.com' && this.loginPassword === 'admin123') || 
+          (this.loginEmail === 'superadmin@dnb.com' && this.loginPassword === 'superadmin123')) {
         this.isLoggedIn = true;
         localStorage.setItem('dnb_logged_in', 'true');
         this.loginEmail = '';
