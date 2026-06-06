@@ -1,5 +1,5 @@
-<div x-show="currentTab === 'videoproduction_dashboard'" class="space-y-6" x-cloak>
-    <!-- Video Production Stats Grid -->
+<div x-show="currentTab === 'design3darsitek_dashboard'" class="space-y-6" x-cloak>
+    <!-- Design 3D Arsitek Stats Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <!-- Stat 1: Total Video Assets -->
         <div class="card-hover bg-white rounded-xl border border-slate-200 shadow-card p-5 flex items-center justify-between">

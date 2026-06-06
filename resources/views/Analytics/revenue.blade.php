@@ -115,10 +115,10 @@
             <div class="bg-orange-400 h-full rounded-full" style="width: 25%"></div>
           </div>
         </div>
-        <!-- Video Production -->
+        <!-- Design 3D & Arsitek -->
         <div class="space-y-1">
           <div class="flex justify-between text-[11px] font-bold text-slate-700">
-            <span>Video Production</span>
+            <span>Design 3D & Arsitek</span>
             <span>15% (Rp 20.300.000)</span>
           </div>
           <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">

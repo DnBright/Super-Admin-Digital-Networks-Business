@@ -131,7 +131,7 @@
               <option value="">-- Pilih Divisi --</option>
               <option value="Web Dev">Web Development</option>
               <option value="Brand Identity">Brand Identity</option>
-              <option value="Video Production">Video Production</option>
+              <option value="Design 3D & Arsitek">Design 3D & Arsitek</option>
             </select>
           </div>
           <button @click="generateMagicLink()"
