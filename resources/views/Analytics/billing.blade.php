@@ -104,7 +104,7 @@
               <option value="Perf. Ads">Performance Ads</option>
               <option value="3D Mockup">3D Mockup</option>
               <option value="Social Media">Social Media</option>
-              <option value="Video Prod">Video Production</option>
+              <option value="Design 3D">Design 3D & Arsitek</option>
             </select>
           </div>
 

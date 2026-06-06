@@ -41,5 +41,5 @@ Route::middleware('web')->group(function () {
     require __DIR__ . '/web/ads-marketing.php';
     require __DIR__ . '/web/3d-mockup.php';
     require __DIR__ . '/web/social-media.php';
-    require __DIR__ . '/web/video-production.php';
+    require __DIR__ . '/web/design3d-arsitek.php';
 });
