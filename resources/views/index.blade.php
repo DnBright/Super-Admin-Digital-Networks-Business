@@ -380,9 +380,9 @@
               </a>
             </div>
 
-            <div x-show="div.id === 6 && currentTab.startsWith('videoproduction_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
-              <a href="{{ route('videoproduction.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
-                 :class="currentTab === 'videoproduction_dashboard' ? 'bg-rose-500/10 text-rose-400 font-bold border-l-2 border-rose-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+            <div x-show="div.id === 6 && currentTab.startsWith('design3darsitek_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('design3darsitek.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'design3darsitek_dashboard' ? 'bg-rose-500/10 text-rose-400 font-bold border-l-2 border-rose-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
                 <span>Overview Dashboard</span>
               </a>
@@ -455,7 +455,7 @@
               currentTab.startsWith('performanceads_') ? 'Performance Ads' :
               currentTab.startsWith('mockup3d_') ? '3D & Arsitek' :
               currentTab.startsWith('socialmedia_') ? 'Social Media' :
-              currentTab.startsWith('videoproduction_') ? 'Video & Motion' :
+              currentTab.startsWith('design3darsitek_') ? 'Design 3D & Arsitek' :
               'Dashboard'">Dashboard</span>
           <i class="fa-solid fa-chevron-right text-[9px] text-slate-300 hidden sm:block"></i>
           <h1 class="text-slate-800 font-bold text-[14px] leading-tight truncate"
@@ -477,7 +477,7 @@
                       currentTab === 'performanceads_dashboard' ? 'Overview Dashboard' :
                       currentTab === 'mockup3d_dashboard' ? 'Overview Dashboard' :
                       currentTab === 'socialmedia_dashboard' ? 'Overview Dashboard' :
-                      currentTab === 'videoproduction_dashboard' ? 'Overview Dashboard' : 'Console'">
+                      currentTab === 'design3darsitek_dashboard' ? 'Overview Dashboard' : 'Console'">
             Global Command Overview
           </h1>
         </div>
@@ -566,8 +566,8 @@
       {{-- Social Media Division Tab Integration --}}
       @include('Divisions.socialmedia.dashboard')
 
-      {{-- Video Production Division Tab Integration --}}
-      @include('Divisions.videoproduction.dashboard')
+      {{-- Design 3D & Arsitek Division Tab Integration --}}
+      @include('Divisions.Design3DArsitek.dashboard')
 
       <!-- Bottom spacer -->
       <div class="h-2"></div>
@@ -690,7 +690,7 @@ function commandCenter() {
       { id: 3, name: 'Perf. Ads', key: 'PERF_ADS', color: '#fb923c', domain: 'jasa-advertising.dnb.com', dbName: 'dnb_perf_ads', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/perf-ads' },
       { id: 4, name: '3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'jasa-mockup.dnb.com', dbName: 'dnb_3d_mockup', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/3d-mockup' },
       { id: 5, name: 'Social Media', key: 'SOCIAL_MEDIA', color: '#f472b6', domain: 'jasa-socialmedia.dnb.com', dbName: 'dnb_socmed', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/social-media' },
-      { id: 6, name: 'Video Prod', key: 'VIDEO_PRODUCTION', color: '#f87171', domain: 'jasa-video.dnb.com', dbName: 'dnb_video_prod', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/video-production' }
+      { id: 6, name: 'Design 3D', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'jasa-3d.dnb.com', dbName: 'dnb_design_3d', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/design3d-arsitek' }
     ],
     cpanelApiToken: localStorage.getItem('dnb_cpanel_token') || '',
     metaAdsToken: localStorage.getItem('dnb_meta_token') || '',
@@ -822,7 +822,7 @@ function commandCenter() {
       { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}', tab: 'performanceads' },
       { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}', tab: 'mockup3d' },
       { id: 5, name: 'Social Media',   icon: 'fa-solid fa-hashtag',  color: '#f472b6', badge: '27', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('socialmedia.dashboard') }}', tab: 'socialmedia' },
-      { id: 6, name: 'Video Prod',     icon: 'fa-solid fa-film',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('videoproduction.dashboard') }}', tab: 'videoproduction' },
+      { id: 6, name: 'Design 3D',     icon: 'fa-solid fa-cube',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('design3darsitek.dashboard') }}', tab: 'design3darsitek' },
     ],
 
     // ── Sparkline ──
