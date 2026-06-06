@@ -1,4 +1,133 @@
 <div x-show="currentTab === 'design3darsitek_dashboard'" class="space-y-6" x-cloak>
+    
+    <!-- Interactive 3D Cards Section (Omnichain Smart Agent Style) -->
+    <div class="mb-8">
+        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-4">Featured Agents</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="relative group rounded-[24px] bg-white overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] transition-all duration-500 ease-in-out hover:-translate-y-2 hover:scale-[1.02] border border-slate-100 cursor-pointer">
+                <!-- Visual Area -->
+                <div class="relative h-64 bg-slate-50 flex items-center justify-center p-6 z-10 border-b border-transparent group-hover:border-slate-800 transition-colors">
+                    <!-- Background Elements -->
+                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-50 via-slate-50 to-slate-50 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <!-- 3D Illustration Mockup -->
+                    <div class="relative flex items-center justify-center w-full h-full transform group-hover:-translate-y-4 group-hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                        <!-- Left Coin -->
+                        <div class="absolute -ml-20 mt-8 w-16 h-16 rounded-full bg-gradient-to-br from-slate-200 to-slate-400 shadow-[0_10px_20px_rgba(0,0,0,0.2)] flex items-center justify-center border-2 border-white/50 transform -rotate-12 group-hover:rotate-0 group-hover:-translate-x-4 transition-transform duration-700 delay-100">
+                            <i class="fa-brands fa-bitcoin text-slate-100 text-3xl"></i>
+                        </div>
+                        
+                        <!-- Center Main Coin -->
+                        <div class="relative z-10 w-24 h-24 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 shadow-[0_15px_30px_rgba(79,70,229,0.3)] flex items-center justify-center border-4 border-white/80 transform group-hover:rotate-12 transition-transform duration-700">
+                            <i class="fa-brands fa-ethereum text-white text-5xl drop-shadow-md"></i>
+                        </div>
+                        
+                        <!-- Right Coin -->
+                        <div class="absolute ml-24 mt-4 w-14 h-14 rounded-full bg-gradient-to-br from-cyan-300 to-blue-500 shadow-[0_8px_15px_rgba(0,0,0,0.2)] flex items-center justify-center border-2 border-white/50 transform rotate-12 group-hover:-rotate-12 group-hover:translate-x-4 transition-transform duration-700 delay-75">
+                            <i class="fa-solid fa-x text-white text-xl"></i>
+                        </div>
+                        
+                        <!-- Mouse Cursor Mockup -->
+                        <div class="absolute mt-20 ml-10 z-20 transform translate-y-8 group-hover:translate-y-0 group-hover:-translate-x-4 transition-transform duration-500 ease-out">
+                            <i class="fa-solid fa-arrow-pointer text-slate-900 text-3xl filter drop-shadow-md transform -rotate-12"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Button (+) -->
+                    <div class="absolute bottom-4 right-4 w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-500 ease-in-out group-hover:rotate-45 group-hover:bg-indigo-500 z-20">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Expandable Content Area -->
+                <div class="bg-slate-900 text-white grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                    <div class="overflow-hidden">
+                        <div class="p-6 pt-5">
+                            <h3 class="font-bold text-lg mb-2 text-white">Omnichain Smart Agent</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                Seamlessly connects across multiple blockchains, creating secure, decentralized and intelligent ecosystems without intermediaries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="relative group rounded-[24px] bg-white overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] transition-all duration-500 ease-in-out hover:-translate-y-2 hover:scale-[1.02] border border-slate-100 cursor-pointer">
+                <!-- Visual Area -->
+                <div class="relative h-64 bg-slate-50 flex items-center justify-center p-6 z-10 border-b border-transparent group-hover:border-slate-800 transition-colors">
+                    <!-- Background Elements -->
+                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-teal-50 via-slate-50 to-slate-50 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <!-- 3D Illustration Mockup -->
+                    <div class="relative flex items-center justify-center w-full h-full transform group-hover:-translate-y-4 group-hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                        <div class="relative z-10 grid grid-cols-2 gap-3 transform -rotate-12 group-hover:rotate-0 transition-transform duration-700">
+                            <div class="w-12 h-16 bg-gradient-to-t from-teal-400 to-teal-200 rounded-lg shadow-lg transform translate-y-4 group-hover:translate-y-2 transition-transform duration-500"></div>
+                            <div class="w-12 h-24 bg-gradient-to-t from-teal-500 to-teal-300 rounded-lg shadow-lg transform -translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-75"></div>
+                            <div class="col-span-2 w-full h-12 bg-gradient-to-t from-teal-600 to-teal-400 rounded-lg shadow-lg flex items-center justify-center">
+                                <i class="fa-solid fa-chart-line text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Button (+) -->
+                    <div class="absolute bottom-4 right-4 w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-500 ease-in-out group-hover:rotate-45 group-hover:bg-teal-500 z-20">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Expandable Content Area -->
+                <div class="bg-slate-900 text-white grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                    <div class="overflow-hidden">
+                        <div class="p-6 pt-5">
+                            <h3 class="font-bold text-lg mb-2 text-white">Yield Optimization</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                Automated strategies to maximize returns across different liquidity pools and yield farming protocols with minimal risk.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="relative group rounded-[24px] bg-white overflow-hidden shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.15)] transition-all duration-500 ease-in-out hover:-translate-y-2 hover:scale-[1.02] border border-slate-100 cursor-pointer">
+                <!-- Visual Area -->
+                <div class="relative h-64 bg-slate-50 flex items-center justify-center p-6 z-10 border-b border-transparent group-hover:border-slate-800 transition-colors">
+                    <!-- Background Elements -->
+                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-50 via-slate-50 to-slate-50 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                    
+                    <!-- 3D Illustration Mockup -->
+                    <div class="relative flex items-center justify-center w-full h-full transform group-hover:-translate-y-4 group-hover:scale-105 transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]">
+                        <div class="relative z-10 w-24 h-24 bg-gradient-to-br from-amber-300 to-orange-500 rounded-[2rem] shadow-[0_15px_30px_rgba(245,158,11,0.3)] flex items-center justify-center transform rotate-12 group-hover:rotate-[24deg] transition-transform duration-700 border-4 border-white">
+                            <i class="fa-solid fa-shield-halved text-white text-4xl"></i>
+                        </div>
+                        <div class="absolute -z-10 w-20 h-20 bg-gradient-to-br from-slate-200 to-slate-300 rounded-[1.5rem] shadow-lg transform -rotate-12 translate-x-10 translate-y-8 group-hover:translate-x-12 group-hover:translate-y-10 transition-transform duration-500"></div>
+                    </div>
+                    
+                    <!-- Action Button (+) -->
+                    <div class="absolute bottom-4 right-4 w-10 h-10 bg-slate-900 text-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-500 ease-in-out group-hover:rotate-45 group-hover:bg-orange-500 z-20">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </div>
+                
+                <!-- Expandable Content Area -->
+                <div class="bg-slate-900 text-white grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+                    <div class="overflow-hidden">
+                        <div class="p-6 pt-5">
+                            <h3 class="font-bold text-lg mb-2 text-white">Secure Vaults</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed">
+                                Enterprise-grade security for your digital assets with multi-sig authentication and real-time threat monitoring systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Design 3D Arsitek Stats Grid -->
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <!-- Stat 1: Total Video Assets -->
