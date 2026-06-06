@@ -145,18 +145,18 @@
                 </div>
             </div>
 
-            <!-- 6. Video Production & Motion -->
+            <!-- 6. Design 3D & Arsitek -->
             <div class="glass rounded-xl p-6 relative overflow-hidden transition-all duration-300 hover:bg-slate-800/40 hover:-translate-y-1 group">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-rose-500/5 rounded-full blur-2xl group-hover:bg-rose-500/10 transition-colors"></div>
                 <div class="flex items-start justify-between">
-                    <span class="px-2 py-0.5 text-[10px] font-bold tracking-wider rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 uppercase">Video</span>
-                    <span class="text-[10px] text-slate-500 font-mono">video.dnb.com</span>
+                    <span class="px-2 py-0.5 text-[10px] font-bold tracking-wider rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 uppercase">Design 3D</span>
+                    <span class="text-[10px] text-slate-500 font-mono">design3d.dnb.com</span>
                 </div>
-                <h4 class="text-xl font-bold text-slate-100 mt-4">Video Production & Motion</h4>
-                <p class="text-xs text-slate-400 mt-2 line-clamp-2">Cinematic asset handovers, NAS storage telemetry monitor, rendering tasks pipelines.</p>
+                <h4 class="text-xl font-bold text-slate-100 mt-4">Design 3D & Arsitek</h4>
+                <p class="text-xs text-slate-400 mt-2 line-clamp-2">Cinematic 3D renderings, architecture designs handovers, rendering tasks pipelines.</p>
                 <div class="mt-6 flex items-center justify-between border-t border-slate-800/80 pt-4">
                     <div class="text-xs text-slate-500">
-                        Active Video Projects: <span class="text-slate-300 font-semibold">12</span>
+                        Active 3D Projects: <span class="text-slate-300 font-semibold">12</span>
                     </div>
                     <a href="#" class="text-xs font-semibold text-rose-400 hover:text-rose-300 transition-colors">Configure &rarr;</a>
                 </div>

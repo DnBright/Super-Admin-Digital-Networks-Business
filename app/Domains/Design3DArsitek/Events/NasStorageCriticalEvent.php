@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\VideoProduction\Events;
+namespace App\Domains\Design3DArsitek\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;

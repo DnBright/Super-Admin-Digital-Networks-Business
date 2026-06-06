@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\VideoProduction\Models;
+namespace App\Domains\Design3DArsitek\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

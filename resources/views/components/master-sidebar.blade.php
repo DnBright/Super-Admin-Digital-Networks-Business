@@ -58,9 +58,9 @@
                     Social Media Mgt
                 </a>
                 <!-- Division 6 -->
-                <a href="{{ route('videoproduction.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('design3darsitek.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-rose-500 rounded-full mr-3 animate-pulse"></span>
-                    Video & Motion <span class="ml-auto text-[9px] bg-rose-500/20 text-rose-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">New</span>
+                    Design 3D & Arsitek <span class="ml-auto text-[9px] bg-rose-500/20 text-rose-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">New</span>
                 </a>
             </div>
         @else

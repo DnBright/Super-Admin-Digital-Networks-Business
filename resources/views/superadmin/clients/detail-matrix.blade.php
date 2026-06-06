@@ -75,15 +75,15 @@
                     </div>
                 </div>
 
-                <!-- Video Production -->
+                <!-- Design 3D & Arsitek -->
                 <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl space-y-3 opacity-60">
                     <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Video Production</span>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Design 3D & Arsitek</span>
                         <span class="px-2 py-0.5 text-[9px] font-bold rounded bg-slate-800 text-slate-500 border border-slate-700">Inactive</span>
                     </div>
                     <div class="space-y-1">
                         <h5 class="font-bold text-slate-400 text-base">No Active Production</h5>
-                        <p class="text-xs text-slate-500">NAS raw storage folders not configured.</p>
+                        <p class="text-xs text-slate-500">NAS 3D Models raw storage folders not configured.</p>
                     </div>
                 </div>
             </div>

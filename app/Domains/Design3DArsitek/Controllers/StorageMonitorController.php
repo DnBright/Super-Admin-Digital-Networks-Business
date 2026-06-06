@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\VideoProduction\Controllers;
+namespace App\Domains\Design3DArsitek\Controllers;
 
 use App\Http\Controllers\Controller;
 
@@ -8,6 +8,6 @@ class StorageMonitorController extends Controller
 {
     public function index()
     {
-        return view('index', ['tab' => 'videoproduction_dashboard']);
+        return view('index', ['tab' => 'design3darsitek_dashboard']);
     }
 }
