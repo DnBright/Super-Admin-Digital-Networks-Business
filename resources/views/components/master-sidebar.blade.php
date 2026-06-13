@@ -31,74 +31,115 @@
 
             <!-- Divisions Control -->
             <div class="pt-4 border-t border-slate-800/60">
-                <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Divisions (1-6)</span>
+                <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Divisi (1-6)</span>
                 <!-- Division 1 -->
                 <a href="{{ route('webdev.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200">
                     <span class="w-2.5 h-2.5 bg-blue-500 rounded-full mr-3"></span>
-                    Web Development
+                    Jasa Buat Website
                 </a>
                 <!-- Division 2 -->
                 <a href="{{ route('brandidentity.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-purple-500 rounded-full mr-3"></span>
-                    Brand Identity
+                    Jasa Buat Logo
                 </a>
                 <!-- Division 3 -->
                 <a href="{{ route('performanceads.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full mr-3"></span>
-                    Performance Ads
+                    Jasa Advertising
                 </a>
                 <!-- Division 4 -->
                 <a href="{{ route('mockup3d.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-amber-500 rounded-full mr-3"></span>
-                    3D Mockups & Arsitek
+                    Jasa 3D Mockup
                 </a>
                 <!-- Division 5 -->
                 <a href="{{ route('saas.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-pink-500 rounded-full mr-3"></span>
-                    SaaS Platform
+                    SaaS
                 </a>
                 <!-- Division 6 -->
                 <a href="{{ route('design3darsitek.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-rose-500 rounded-full mr-3 animate-pulse"></span>
-                    Design 3D & Arsitek <span class="ml-auto text-[9px] bg-rose-500/20 text-rose-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">New</span>
+                    Jasa 3D Arsitek <span class="ml-auto text-[9px] bg-rose-500/20 text-rose-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Baru</span>
                 </a>
             </div>
         @else
             <!-- Division Specific Navigation -->
             @if($division === 'webdev')
                 <div class="pb-2">
-                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Webdev Console</span>
+                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Konsol Jasa Buat Website</span>
                     <a href="{{ route('webdev.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.dashboard') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200">
-                        Overview Dashboard
+                        Ringkasan Dashboard
                     </a>
                     <a href="{{ route('webdev.kanban') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.kanban') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
-                        Kanban Workboard
+                        Papan Kerja Kanban
                     </a>
                     <a href="{{ route('webdev.templates.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.templates.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
-                        Template Control
+                        Kontrol Template
                     </a>
                     <a href="{{ route('webdev.packages.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.packages.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
-                        Package Control
+                        Kontrol Paket
                     </a>
                     <a href="{{ route('webdev.reviews.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.reviews.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
-                        Review Control
+                        Kontrol Ulasan
                     </a>
                     <a href="{{ route('webdev.chat.index') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('webdev.chat.*') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
-                        Live Chat
+                        Pesan Obrolan
+                    </a>
+                </div>
+            @elseif($division === 'brandidentity')
+                <div class="pb-2">
+                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Konsol Jasa Buat Logo</span>
+                    <a href="{{ route('brandidentity.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('brandidentity.dashboard') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200">
+                        Ringkasan Dashboard
+                    </a>
+                    <a href="{{ route('brandidentity.assets') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('brandidentity.assets') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
+                        Brankas Aset
+                    </a>
+                    <a href="{{ route('brandidentity.tokens') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('brandidentity.tokens') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200 mt-1">
+                        Token Revisi
+                    </a>
+                </div>
+            @elseif($division === 'performanceads')
+                <div class="pb-2">
+                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Konsol Jasa Advertising</span>
+                    <a href="{{ route('performanceads.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('performanceads.dashboard') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200">
+                        Ringkasan Dashboard
+                    </a>
+                </div>
+            @elseif($division === 'mockup3d')
+                <div class="pb-2">
+                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Konsol Jasa 3D Mockup</span>
+                    <a href="{{ route('mockup3d.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('mockup3d.dashboard') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200">
+                        Ringkasan Dashboard
+                    </a>
+                </div>
+            @elseif($division === 'saas')
+                <div class="pb-2">
+                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Konsol SaaS</span>
+                    <a href="{{ route('saas.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('saas.dashboard') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200">
+                        Ringkasan Dashboard
+                    </a>
+                </div>
+            @elseif($division === 'design3darsitek')
+                <div class="pb-2">
+                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Konsol Jasa 3D Arsitek</span>
+                    <a href="{{ route('design3darsitek.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium {{ request()->routeIs('design3darsitek.dashboard') ? 'text-slate-200 bg-slate-800/60 border border-slate-700/30' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40' }} rounded-md transition-all duration-200">
+                        Ringkasan Dashboard
                     </a>
                 </div>
             @else
                 <div class="pb-2">
-                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">{{ ucfirst($division) }} Console</span>
+                    <span class="px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest block mb-2">Konsol Divisi</span>
                     <a href="#" class="flex items-center px-3 py-2 text-sm font-medium text-slate-300 rounded-md bg-slate-800/60 border border-slate-700/30 transition-all duration-200">
-                        Overview Dashboard
+                        Ringkasan Dashboard
                     </a>
                 </div>
             @endif
 
             <div class="pt-4 border-t border-slate-800/60">
                 <a href="{{ url('/') }}" class="flex items-center px-3 py-2 text-sm font-medium text-indigo-400 hover:text-indigo-300 hover:bg-slate-800/30 rounded-md transition-all duration-200">
-                    &larr; Back to Super Admin
+                    &larr; Kembali ke Super Admin
                 </a>
             </div>
         @endif
