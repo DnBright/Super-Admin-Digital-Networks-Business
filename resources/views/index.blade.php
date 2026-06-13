@@ -371,10 +371,10 @@
               </a>
             </div>
 
-            <!-- Social Media Submenu (shown only inside Super Admin layout when active) -->
-            <div x-show="div.id === 5 && currentTab.startsWith('socialmedia_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
-              <a href="{{ route('socialmedia.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
-                 :class="currentTab === 'socialmedia_dashboard' ? 'bg-pink-500/10 text-pink-400 font-bold border-l-2 border-pink-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
+            <!-- SaaS Submenu (shown only inside Super Admin layout when active) -->
+            <div x-show="div.id === 5 && currentTab.startsWith('saas_')" class="pl-4 pr-1.5 py-2 space-y-1 bg-slate-950/30 border-l border-slate-800 mt-1 rounded-md" x-cloak>
+              <a href="{{ route('saas.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
+                 :class="currentTab === 'saas_dashboard' ? 'bg-pink-500/10 text-pink-400 font-bold border-l-2 border-pink-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
                 <span>Overview Dashboard</span>
               </a>
@@ -454,7 +454,7 @@
               currentTab.startsWith('brandidentity_') ? 'Brand Identity' : 
               currentTab.startsWith('performanceads_') ? 'Performance Ads' :
               currentTab.startsWith('mockup3d_') ? '3D & Arsitek' :
-              currentTab.startsWith('socialmedia_') ? 'Social Media' :
+              currentTab.startsWith('saas_') ? 'SaaS' :
               currentTab.startsWith('design3darsitek_') ? 'Design 3D & Arsitek' :
               'Dashboard'">Dashboard</span>
           <i class="fa-solid fa-chevron-right text-[9px] text-slate-300 hidden sm:block"></i>
@@ -476,7 +476,7 @@
                       currentTab === 'brandidentity_tokens' ? 'Revision Tokens Manager' :
                       currentTab === 'performanceads_dashboard' ? 'Overview Dashboard' :
                       currentTab === 'mockup3d_dashboard' ? 'Overview Dashboard' :
-                      currentTab === 'socialmedia_dashboard' ? 'Overview Dashboard' :
+                      currentTab === 'saas_dashboard' ? 'Overview Dashboard' :
                       currentTab === 'design3darsitek_dashboard' ? 'Overview Dashboard' : 'Console'">
             Global Command Overview
           </h1>
@@ -563,8 +563,8 @@
       {{-- 3D Mockup Division Tab Integration --}}
       @include('Divisions.mockup3d.dashboard')
 
-      {{-- Social Media Division Tab Integration --}}
-      @include('Divisions.socialmedia.dashboard')
+      {{-- SaaS Division Tab Integration --}}
+      @include('Divisions.saas.dashboard')
 
       {{-- Design 3D & Arsitek Division Tab Integration --}}
       @include('Divisions.Design3DArsitek.dashboard')
@@ -685,12 +685,12 @@ function commandCenter() {
 
     // ── System Settings State ──
     divisionsConfig: JSON.parse(localStorage.getItem('dnb_divisions_config')) || [
-      { id: 1, name: 'Web Dev', key: 'WEB_DEV', color: '#60a5fa', domain: 'jasa-website.dnb.com', dbName: 'dnb_webdev', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/webdev' },
-      { id: 2, name: 'Brand Identity', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'jasa-logo.dnb.com', dbName: 'dnb_brand_id', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/brand-id' },
-      { id: 3, name: 'Perf. Ads', key: 'PERF_ADS', color: '#fb923c', domain: 'jasa-advertising.dnb.com', dbName: 'dnb_perf_ads', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/perf-ads' },
-      { id: 4, name: '3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'jasa-mockup.dnb.com', dbName: 'dnb_3d_mockup', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/3d-mockup' },
-      { id: 5, name: 'Social Media', key: 'SOCIAL_MEDIA', color: '#f472b6', domain: 'jasa-socialmedia.dnb.com', dbName: 'dnb_socmed', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/social-media' },
-      { id: 6, name: 'Design 3D', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'jasa-3d.dnb.com', dbName: 'dnb_design_3d', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/Super-Admin-Digital-Networks-Business/divisions/design3d-arsitek' }
+      { id: 1, name: 'Web Dev', key: 'WEB_DEV', color: '#60a5fa', domain: 'jasa-website.dnb.com', dbName: 'dnb_webdev', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite' },
+      { id: 2, name: 'Brand Identity', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'jasa-logo.dnb.com', dbName: 'dnb_brand_id', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Buat_Logo' },
+      { id: 3, name: 'Perf. Ads', key: 'PERF_ADS', color: '#fb923c', domain: 'jasa-advertising.dnb.com', dbName: 'dnb_perf_ads', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Advertising' },
+      { id: 4, name: '3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'jasa-mockup.dnb.com', dbName: 'dnb_3d_mockup', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa-3D-Mockup' },
+      { id: 5, name: 'SaaS', key: 'SAAS', color: '#f472b6', domain: 'saas.dnb.com', dbName: 'dnb_saas', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/SaaS' },
+      { id: 6, name: 'Design 3D', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'jasa-3d.dnb.com', dbName: 'dnb_design_3d', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_3D-Arsitek' }
     ],
     cpanelApiToken: localStorage.getItem('dnb_cpanel_token') || '',
     metaAdsToken: localStorage.getItem('dnb_meta_token') || '',
@@ -822,7 +822,7 @@ function commandCenter() {
       { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.dashboard') }}', tab: 'brandidentity' },
       { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}', tab: 'performanceads' },
       { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}', tab: 'mockup3d' },
-      { id: 5, name: 'Social Media',   icon: 'fa-solid fa-hashtag',  color: '#f472b6', badge: '27', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('socialmedia.dashboard') }}', tab: 'socialmedia' },
+      { id: 5, name: 'SaaS',           icon: 'fa-solid fa-cloud',    color: '#f472b6', badge: '12', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('saas.dashboard') }}', tab: 'saas' },
       { id: 6, name: 'Design 3D',     icon: 'fa-solid fa-cube',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('design3darsitek.dashboard') }}', tab: 'design3darsitek' },
     ],
 
@@ -937,6 +937,12 @@ function commandCenter() {
 
     // ── Init ──
     init() {
+      // Reset division cache if it's the old structure
+      if (localStorage.getItem('dnb_divisions_config') && localStorage.getItem('dnb_divisions_config').includes('social-media')) {
+        localStorage.removeItem('dnb_divisions_config');
+        window.location.reload();
+      }
+
       // Check auth state
       this.isLoggedIn = localStorage.getItem('dnb_logged_in') === 'true';
 

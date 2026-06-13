@@ -53,9 +53,9 @@
                     3D Mockups & Arsitek
                 </a>
                 <!-- Division 5 -->
-                <a href="{{ route('socialmedia.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
+                <a href="{{ route('saas.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
                     <span class="w-2.5 h-2.5 bg-pink-500 rounded-full mr-3"></span>
-                    Social Media Mgt
+                    SaaS Platform
                 </a>
                 <!-- Division 6 -->
                 <a href="{{ route('design3darsitek.dashboard') }}" class="flex items-center px-3 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 rounded-md transition-all duration-200 mt-1">
