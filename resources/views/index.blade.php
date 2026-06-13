@@ -305,32 +305,32 @@
               <a href="{{ route('webdev.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'webdev_dashboard' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
-                <span>Overview Dashboard</span>
+                <span>Ringkasan Dashboard</span>
               </a>
               <a href="{{ route('webdev.kanban') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'webdev_kanban' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-table-columns text-[10px]"></i>
-                <span>Kanban Workboard</span>
+                <span>Papan Kerja Kanban</span>
               </a>
               <a href="{{ route('webdev.templates.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'webdev_templates' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-laptop-code text-[10px]"></i>
-                <span>Template Control</span>
+                <span>Kontrol Template</span>
               </a>
               <a href="{{ route('webdev.packages.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'webdev_packages' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-tags text-[10px]"></i>
-                <span>Package Control</span>
+                <span>Kontrol Paket</span>
               </a>
               <a href="{{ route('webdev.reviews.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'webdev_reviews' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-star text-[10px]"></i>
-                <span>Review Control</span>
+                <span>Kontrol Ulasan</span>
               </a>
               <a href="{{ route('webdev.chat.index') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'webdev_chat' ? 'bg-blue-500/10 text-blue-400 font-bold border-l-2 border-blue-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-comments text-[10px]"></i>
-                <span>Live Chat Inbox</span>
+                <span>Pesan Obrolan</span>
               </a>
             </div>
 
@@ -339,17 +339,17 @@
               <a href="{{ route('brandidentity.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'brandidentity_dashboard' ? 'bg-purple-500/10 text-purple-400 font-bold border-l-2 border-purple-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
-                <span>Overview Dashboard</span>
+                <span>Ringkasan Dashboard</span>
               </a>
               <a href="{{ route('brandidentity.assets') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'brandidentity_assets' ? 'bg-purple-500/10 text-purple-400 font-bold border-l-2 border-purple-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-vault text-[10px]"></i>
-                <span>Asset Handover Vault</span>
+                <span>Brankas Aset</span>
               </a>
               <a href="{{ route('brandidentity.tokens') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'brandidentity_tokens' ? 'bg-purple-500/10 text-purple-400 font-bold border-l-2 border-purple-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-key text-[10px]"></i>
-                <span>Revision Tokens</span>
+                <span>Token Revisi</span>
               </a>
             </div>
 
@@ -358,7 +358,7 @@
               <a href="{{ route('performanceads.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'performanceads_dashboard' ? 'bg-orange-500/10 text-orange-400 font-bold border-l-2 border-orange-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
-                <span>Overview Dashboard</span>
+                <span>Ringkasan Dashboard</span>
               </a>
             </div>
 
@@ -367,7 +367,7 @@
               <a href="{{ route('mockup3d.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'mockup3d_dashboard' ? 'bg-cyan-500/10 text-cyan-400 font-bold border-l-2 border-cyan-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
-                <span>Overview Dashboard</span>
+                <span>Ringkasan Dashboard</span>
               </a>
             </div>
 
@@ -376,7 +376,7 @@
               <a href="{{ route('saas.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'saas_dashboard' ? 'bg-pink-500/10 text-pink-400 font-bold border-l-2 border-pink-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
-                <span>Overview Dashboard</span>
+                <span>Ringkasan Dashboard</span>
               </a>
             </div>
 
@@ -384,7 +384,7 @@
               <a href="{{ route('design3darsitek.dashboard') }}" class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all duration-150"
                  :class="currentTab === 'design3darsitek_dashboard' ? 'bg-rose-500/10 text-rose-400 font-bold border-l-2 border-rose-500 rounded-l-none' : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/20'">
                 <i class="fa-solid fa-chart-pie text-[10px]"></i>
-                <span>Overview Dashboard</span>
+                <span>Ringkasan Dashboard</span>
               </a>
             </div>
           </div>
@@ -450,34 +450,34 @@
         <!-- Breadcrumb / Page title -->
         <div class="flex items-center gap-2 min-w-0">
           <span class="text-slate-400 text-xs hidden sm:block" x-text="
-              currentTab.startsWith('webdev_') ? 'Web Dev' : 
-              currentTab.startsWith('brandidentity_') ? 'Brand Identity' : 
-              currentTab.startsWith('performanceads_') ? 'Performance Ads' :
-              currentTab.startsWith('mockup3d_') ? '3D & Arsitek' :
+              currentTab.startsWith('webdev_') ? 'Jasa Buat Website' : 
+              currentTab.startsWith('brandidentity_') ? 'Jasa Buat Logo' : 
+              currentTab.startsWith('performanceads_') ? 'Jasa Advertising' :
+              currentTab.startsWith('mockup3d_') ? 'Jasa 3D Mockup' :
               currentTab.startsWith('saas_') ? 'SaaS' :
-              currentTab.startsWith('design3darsitek_') ? 'Design 3D & Arsitek' :
+              currentTab.startsWith('design3darsitek_') ? 'Jasa 3D Arsitek' :
               'Dashboard'">Dashboard</span>
           <i class="fa-solid fa-chevron-right text-[9px] text-slate-300 hidden sm:block"></i>
           <h1 class="text-slate-800 font-bold text-[14px] leading-tight truncate"
-              x-text="currentTab === 'global_command' ? 'Global Command Overview' :
-                      currentTab === 'access_control' ? 'Access Control Panel' :
-                      currentTab === 'system_settings' ? 'System Settings Panel' :
-                      currentTab === 'revenue_report' ? 'Revenue Report' :
-                      currentTab === 'billing_invoice' ? 'Billing & Invoice' :
-                      currentTab === 'client_directory' ? 'Client Directory' :
-                      currentTab === 'webdev_dashboard' ? 'Overview Console' :
-                      currentTab === 'webdev_kanban' ? 'Kanban Workboard' :
-                      currentTab === 'webdev_templates' ? 'Template Control' :
-                      currentTab === 'webdev_packages' ? 'Package Control' :
-                      currentTab === 'webdev_reviews' ? 'Review Control' :
-                      currentTab === 'webdev_chat' ? 'Live Chat Inbox' :
-                      currentTab === 'brandidentity_dashboard' ? 'Overview Dashboard' :
-                      currentTab === 'brandidentity_assets' ? 'Asset Handover Vault' :
-                      currentTab === 'brandidentity_tokens' ? 'Revision Tokens Manager' :
-                      currentTab === 'performanceads_dashboard' ? 'Overview Dashboard' :
-                      currentTab === 'mockup3d_dashboard' ? 'Overview Dashboard' :
-                      currentTab === 'saas_dashboard' ? 'Overview Dashboard' :
-                      currentTab === 'design3darsitek_dashboard' ? 'Overview Dashboard' : 'Console'">
+              x-text="currentTab === 'global_command' ? 'Ikhtisar Komando Global' :
+                      currentTab === 'access_control' ? 'Panel Kontrol Akses' :
+                      currentTab === 'system_settings' ? 'Panel Pengaturan Sistem' :
+                      currentTab === 'revenue_report' ? 'Laporan Pendapatan' :
+                      currentTab === 'billing_invoice' ? 'Penagihan & Faktur' :
+                      currentTab === 'client_directory' ? 'Direktori Klien' :
+                      currentTab === 'webdev_dashboard' ? 'Konsol Ringkasan' :
+                      currentTab === 'webdev_kanban' ? 'Papan Kerja Kanban' :
+                      currentTab === 'webdev_templates' ? 'Kontrol Template' :
+                      currentTab === 'webdev_packages' ? 'Kontrol Paket' :
+                      currentTab === 'webdev_reviews' ? 'Kontrol Ulasan' :
+                      currentTab === 'webdev_chat' ? 'Pesan Obrolan' :
+                      currentTab === 'brandidentity_dashboard' ? 'Ringkasan Dashboard' :
+                      currentTab === 'brandidentity_assets' ? 'Brankas Aset' :
+                      currentTab === 'brandidentity_tokens' ? 'Pengelola Token Revisi' :
+                      currentTab === 'performanceads_dashboard' ? 'Ringkasan Dashboard' :
+                      currentTab === 'mockup3d_dashboard' ? 'Ringkasan Dashboard' :
+                      currentTab === 'saas_dashboard' ? 'Ringkasan Dashboard' :
+                      currentTab === 'design3darsitek_dashboard' ? 'Ringkasan Dashboard' : 'Konsol'">
             Global Command Overview
           </h1>
         </div>
@@ -685,12 +685,12 @@ function commandCenter() {
 
     // ── System Settings State ──
     divisionsConfig: JSON.parse(localStorage.getItem('dnb_divisions_config')) || [
-      { id: 1, name: 'Web Dev', key: 'WEB_DEV', color: '#60a5fa', domain: 'jasa-website.dnb.com', dbName: 'dnb_webdev', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite' },
-      { id: 2, name: 'Brand Identity', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'jasa-logo.dnb.com', dbName: 'dnb_brand_id', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Buat_Logo' },
-      { id: 3, name: 'Perf. Ads', key: 'PERF_ADS', color: '#fb923c', domain: 'jasa-advertising.dnb.com', dbName: 'dnb_perf_ads', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Advertising' },
-      { id: 4, name: '3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'jasa-mockup.dnb.com', dbName: 'dnb_3d_mockup', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa-3D-Mockup' },
+      { id: 1, name: 'Jasa Buat Website', key: 'WEB_DEV', color: '#60a5fa', domain: 'jasa-website.dnb.com', dbName: 'dnb_webdev', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite' },
+      { id: 2, name: 'Jasa Buat Logo', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'jasa-logo.dnb.com', dbName: 'dnb_brand_id', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Buat_Logo' },
+      { id: 3, name: 'Jasa Advertising', key: 'PERF_ADS', color: '#fb923c', domain: 'jasa-advertising.dnb.com', dbName: 'dnb_perf_ads', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Advertising' },
+      { id: 4, name: 'Jasa 3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'jasa-mockup.dnb.com', dbName: 'dnb_3d_mockup', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa-3D-Mockup' },
       { id: 5, name: 'SaaS', key: 'SAAS', color: '#f472b6', domain: 'saas.dnb.com', dbName: 'dnb_saas', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/SaaS' },
-      { id: 6, name: 'Design 3D', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'jasa-3d.dnb.com', dbName: 'dnb_design_3d', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_3D-Arsitek' }
+      { id: 6, name: 'Jasa 3D Arsitek', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'jasa-3d.dnb.com', dbName: 'dnb_design_3d', dbUser: 'root', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_3D-Arsitek' }
     ],
     cpanelApiToken: localStorage.getItem('dnb_cpanel_token') || '',
     metaAdsToken: localStorage.getItem('dnb_meta_token') || '',
@@ -818,12 +818,12 @@ function commandCenter() {
 
     // ── Sidebar nav ──
     navDivisions: [
-      { id: 1, name: 'Web Dev',        icon: 'fa-solid fa-code',     color: '#60a5fa', badge: '24', badgeClass: 'bg-blue-500/20 text-blue-300', url: '{{ route('webdev.dashboard') }}', tab: 'webdev' },
-      { id: 2, name: 'Brand Identity', icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.dashboard') }}', tab: 'brandidentity' },
-      { id: 3, name: 'Perf. Ads',      icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}', tab: 'performanceads' },
-      { id: 4, name: '3D Mockup',      icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}', tab: 'mockup3d' },
-      { id: 5, name: 'SaaS',           icon: 'fa-solid fa-cloud',    color: '#f472b6', badge: '12', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('saas.dashboard') }}', tab: 'saas' },
-      { id: 6, name: 'Design 3D',     icon: 'fa-solid fa-cube',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('design3darsitek.dashboard') }}', tab: 'design3darsitek' },
+      { id: 1, name: 'Jasa Buat Website', icon: 'fa-solid fa-code',     color: '#60a5fa', badge: '24', badgeClass: 'bg-blue-500/20 text-blue-300', url: '{{ route('webdev.dashboard') }}', tab: 'webdev' },
+      { id: 2, name: 'Jasa Buat Logo',    icon: 'fa-solid fa-palette',  color: '#a78bfa', badge: '18', badgeClass: 'bg-purple-500/20 text-purple-300', url: '{{ route('brandidentity.dashboard') }}', tab: 'brandidentity' },
+      { id: 3, name: 'Jasa Advertising',  icon: 'fa-solid fa-bullhorn', color: '#fb923c', badge: '31', badgeClass: 'bg-orange-500/20 text-orange-300', url: '{{ route('performanceads.dashboard') }}', tab: 'performanceads' },
+      { id: 4, name: 'Jasa 3D Mockup',    icon: 'fa-solid fa-cube',     color: '#22d3ee', badge: '12', badgeClass: 'bg-cyan-500/20 text-cyan-300', url: '{{ route('mockup3d.dashboard') }}', tab: 'mockup3d' },
+      { id: 5, name: 'SaaS',              icon: 'fa-solid fa-cloud',    color: '#f472b6', badge: '12', badgeClass: 'bg-pink-500/20 text-pink-300', url: '{{ route('saas.dashboard') }}', tab: 'saas' },
+      { id: 6, name: 'Jasa 3D Arsitek',   icon: 'fa-solid fa-cube',     color: '#f87171', badge: '16', badgeClass: 'bg-red-500/20 text-red-300', url: '{{ route('design3darsitek.dashboard') }}', tab: 'design3darsitek' },
     ],
 
     // ── Sparkline ──
@@ -938,7 +938,7 @@ function commandCenter() {
     // ── Init ──
     init() {
       // Reset division cache if it's the old structure
-      if (localStorage.getItem('dnb_divisions_config') && localStorage.getItem('dnb_divisions_config').includes('social-media')) {
+      if (localStorage.getItem('dnb_divisions_config') && (localStorage.getItem('dnb_divisions_config').includes('social-media') || localStorage.getItem('dnb_divisions_config').includes('Web Dev') || localStorage.getItem('dnb_divisions_config').includes('Webdev'))) {
         localStorage.removeItem('dnb_divisions_config');
         window.location.reload();
       }
