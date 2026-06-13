@@ -99,7 +99,7 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/10 transition-colors"></div>
                 <div class="flex items-start justify-between">
                     <span class="px-2 py-0.5 text-[10px] font-bold tracking-wider rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase">Ads</span>
-                    <span class="text-[10px] text-slate-500 font-mono">jasasocialmanagement.gro.co.id</span>
+                    <span class="text-[10px] text-slate-500 font-mono">sosmedjogja.gro.co.id</span>
                 </div>
                 <h4 class="text-xl font-bold text-slate-100 mt-4">Jasa Advertising</h4>
                 <p class="text-xs text-slate-400 mt-2 line-clamp-2">Pemasaran berkinerja, sinkronisasi API Facebook/Google Ads, pelacakan ROI real-time.</p>
@@ -133,7 +133,7 @@
                 <div class="absolute top-0 right-0 w-24 h-24 bg-pink-500/5 rounded-full blur-2xl group-hover:bg-pink-500/10 transition-colors"></div>
                 <div class="flex items-start justify-between">
                     <span class="px-2 py-0.5 text-[10px] font-bold tracking-wider rounded bg-pink-500/10 text-pink-400 border border-pink-500/20 uppercase">SaaS</span>
-                    <span class="text-[10px] text-slate-500 font-mono">inventory.jogja.gro.co.id</span>
+                    <span class="text-[10px] text-slate-500 font-mono">inven.gro.co.id</span>
                 </div>
                 <h4 class="text-xl font-bold text-slate-100 mt-4">SaaS Platform</h4>
                 <p class="text-xs text-slate-400 mt-2 line-clamp-2">Model deployment SaaS, pelacakan langganan bulanan, alokasi instansi server.</p>
