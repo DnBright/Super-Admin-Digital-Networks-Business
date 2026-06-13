@@ -47,7 +47,7 @@ return [
         'webdev' => [
             'driver' => 'sqlite',
             'url' => env('DB_WEBDEV_URL'),
-            'database' => env('DB_WEBDEV_DATABASE', '/Users/mac/Project Website/Kerja/jasabuatwebsite/database/database.sqlite'),
+            'database' => env('DB_WEBDEV_DATABASE', '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/database/database.sqlite'),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_WEBDEV_FOREIGN_KEYS', true),
         ],

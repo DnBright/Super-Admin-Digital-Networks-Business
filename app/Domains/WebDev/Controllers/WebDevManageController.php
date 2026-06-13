@@ -39,7 +39,7 @@ class WebDevManageController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $destinationPath = '/Users/mac/Project Website/Kerja/jasabuatwebsite/public/images';
+            $destinationPath = '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/public/images';
             if (is_dir($destinationPath)) {
                 $file->move($destinationPath, $filename);
                 $imagePath = '/images/' . $filename;
@@ -62,8 +62,8 @@ class WebDevManageController extends Controller
         ]);
 
         // Clear jasabuatwebsite cache if possible
-        @unlink('/Users/mac/Project Website/Kerja/jasabuatwebsite/bootstrap/cache/config.php');
-        @unlink('/Users/mac/Project Website/Kerja/jasabuatwebsite/bootstrap/cache/routes.php');
+        @unlink('/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/bootstrap/cache/config.php');
+        @unlink('/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/bootstrap/cache/routes.php');
 
         return redirect()->route('webdev.templates.index')->with('success', 'Template baru berhasil ditambahkan ke JasaBuatWebsite.');
     }
@@ -83,7 +83,7 @@ class WebDevManageController extends Controller
         if ($request->hasFile('image')) {
             // Delete old file
             if ($template->image && !str_contains($template->image, 'template_')) {
-                $oldPath = '/Users/mac/Project Website/Kerja/jasabuatwebsite/public' . $template->image;
+                $oldPath = '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/public' . $template->image;
                 if (file_exists($oldPath)) {
                     @unlink($oldPath);
                 }
@@ -91,7 +91,7 @@ class WebDevManageController extends Controller
 
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $destinationPath = '/Users/mac/Project Website/Kerja/jasabuatwebsite/public/images';
+            $destinationPath = '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/public/images';
             if (is_dir($destinationPath)) {
                 $file->move($destinationPath, $filename);
                 $data['image'] = '/images/' . $filename;
@@ -108,7 +108,7 @@ class WebDevManageController extends Controller
         $template = WebTemplate::findOrFail($id);
         
         if ($template->image && !str_contains($template->image, 'template_')) {
-            $oldPath = '/Users/mac/Project Website/Kerja/jasabuatwebsite/public' . $template->image;
+            $oldPath = '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/public' . $template->image;
             if (file_exists($oldPath)) {
                 @unlink($oldPath);
             }

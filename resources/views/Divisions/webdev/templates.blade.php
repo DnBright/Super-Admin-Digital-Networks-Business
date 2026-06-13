@@ -31,7 +31,7 @@
             <div class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-card flex flex-col justify-between card-hover">
                 <!-- Thumbnail -->
                 <div class="relative h-48 bg-slate-50 overflow-hidden border-b border-slate-200/60">
-                    <img src="/Users/mac/Project Website/Kerja/jasabuatwebsite/public/{{ $template->image }}" 
+                    <img src="/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/public/{{ $template->image }}" 
                          alt="{{ $template->name }}" 
                          class="w-full h-full object-cover"
                          onerror="this.src='{{ asset($template->image) }}'">
@@ -103,7 +103,7 @@
                             <div class="space-y-1.5">
                                 <label class="block font-bold text-slate-500 uppercase tracking-wider">Template Thumbnail Image</label>
                                 <div class="bg-slate-50 border border-slate-200 p-2.5 rounded-lg flex items-center gap-4">
-                                    <img src="/Users/mac/Project Website/Kerja/jasabuatwebsite/public/{{ $template->image }}" class="w-12 h-12 object-cover rounded-md border border-slate-200" onerror="this.src='{{ asset($template->image) }}'">
+                                    <img src="/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/public/{{ $template->image }}" class="w-12 h-12 object-cover rounded-md border border-slate-200" onerror="this.src='{{ asset($template->image) }}'">
                                     <div class="flex-1">
                                         <input type="file" name="image" class="text-[11px] text-slate-500">
                                         <span class="block text-[10px] text-slate-400 mt-1">Biarkan kosong jika tidak ingin mengubah gambar. Max 5MB.</span>

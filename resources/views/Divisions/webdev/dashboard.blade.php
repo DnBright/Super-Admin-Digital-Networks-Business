@@ -152,7 +152,7 @@
                     @forelse($templates as $template)
                         <tr class="trow transition-colors">
                             <td class="px-5 py-3">
-                                <img src="/Users/mac/Project Website/Kerja/jasabuatwebsite/public/{{ $template->image }}" 
+                                <img src="/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite/public/{{ $template->image }}" 
                                      alt="{{ $template->name }}" 
                                      class="w-12 h-9 object-cover rounded-lg border border-slate-200 shadow-sm"
                                      onerror="this.src='{{ asset($template->image) }}'">
