@@ -685,12 +685,12 @@ function commandCenter() {
 
     // ── System Settings State ──
     divisionsConfig: JSON.parse(localStorage.getItem('dnb_divisions_config')) || [
-      { id: 1, name: 'Jasa Buat Website', key: 'WEB_DEV', color: '#60a5fa', domain: 'buatwebjogja.gro.co.id', dbName: 'grop6915_buatweb_jogja', dbUser: 'grop6915_ganang', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite' },
-      { id: 2, name: 'Jasa Buat Logo', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'buatlogojogja.gro.co.id', dbName: 'grop6915_Jasa_Buat_Logo', dbUser: 'grop6915_ganang', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Buat_Logo' },
-      { id: 3, name: 'Jasa Advertising', key: 'PERF_ADS', color: '#fb923c', domain: 'jasasocialmanagement.gro.co.id', dbName: 'grop6915_Jasa_Social_Media_Management', dbUser: 'grop6915_ganang', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Advertising' },
-      { id: 4, name: 'Jasa 3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'animation.jogja.gro.co.id', dbName: 'grop6915_Jasa_Buat_Design', dbUser: 'grop6915_ganang', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa-3D-Mockup' },
-      { id: 5, name: 'SaaS', key: 'SAAS', color: '#f472b6', domain: 'inventory.jogja.gro.co.id', dbName: 'grop6915_SaaS', dbUser: 'grop6915_ganang', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/SaaS' },
-      { id: 6, name: 'Jasa 3D Arsitek', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'designrumah.gro.co.id', dbName: 'grop6915_Jasa_3D_Arsitek', dbUser: 'grop6915_ganang', dbPassword: '', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_3D-Arsitek' }
+      { id: 1, name: 'Jasa Buat Website', key: 'WEB_DEV', color: '#60a5fa', domain: 'buatwebjogja.gro.co.id', dbName: 'grop6915_buatweb_jogja', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite' },
+      { id: 2, name: 'Jasa Buat Logo', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'buatlogojogja.gro.co.id', dbName: 'grop6915_Jasa_Buat_Logo', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Buat_Logo' },
+      { id: 3, name: 'Jasa Advertising', key: 'PERF_ADS', color: '#fb923c', domain: 'jasasocialmanagement.gro.co.id', dbName: 'grop6915_Jasa_Social_Media_Management', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Advertising' },
+      { id: 4, name: 'Jasa 3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'animation.jogja.gro.co.id', dbName: 'grop6915_Jasa_Buat_Design', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa-3D-Mockup' },
+      { id: 5, name: 'SaaS', key: 'SAAS', color: '#f472b6', domain: 'inventory.jogja.gro.co.id', dbName: 'grop6915_SaaS', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/SaaS' },
+      { id: 6, name: 'Jasa 3D Arsitek', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'designrumah.gro.co.id', dbName: 'grop6915_Jasa_3D_Arsitek', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_3D-Arsitek' }
     ],
     cpanelApiToken: localStorage.getItem('dnb_cpanel_token') || '',
     metaAdsToken: localStorage.getItem('dnb_meta_token') || '',
@@ -937,8 +937,8 @@ function commandCenter() {
 
     // ── Init ──
     init() {
-      // Reset division cache if it's the old structure
-      if (localStorage.getItem('dnb_divisions_config') && (localStorage.getItem('dnb_divisions_config').includes('social-media') || localStorage.getItem('dnb_divisions_config').includes('Web Dev') || localStorage.getItem('dnb_divisions_config').includes('Webdev') || !localStorage.getItem('dnb_divisions_config').includes('grop6915_ganang'))) {
+      // Reset division cache if it's the old structure or missing password
+      if (localStorage.getItem('dnb_divisions_config') && (localStorage.getItem('dnb_divisions_config').includes('social-media') || localStorage.getItem('dnb_divisions_config').includes('Web Dev') || localStorage.getItem('dnb_divisions_config').includes('Webdev') || !localStorage.getItem('dnb_divisions_config').includes('grop6915_ganang') || !localStorage.getItem('dnb_divisions_config').includes('FuvmtTA4f6sz36'))) {
         localStorage.removeItem('dnb_divisions_config');
         window.location.reload();
       }
