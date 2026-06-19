@@ -16,9 +16,16 @@ Route::get('/access-control', function () {
     return view('index', ['tab' => 'access_control']);
 });
 
+use App\Domains\SuperAdmin\Controllers\SystemSettingsController;
+
 Route::get('/system-settings', function () {
     return view('index', ['tab' => 'system_settings']);
 });
+
+Route::get('/api/system-settings', [SystemSettingsController::class, 'fetchSettings']);
+Route::post('/api/system-settings/division/{id}', [SystemSettingsController::class, 'saveDivision']);
+Route::post('/api/system-settings/test-db/{id}', [SystemSettingsController::class, 'testDbConnection']);
+Route::post('/api/system-settings/global', [SystemSettingsController::class, 'saveGlobalSettings']);
 
 Route::get('/revenue-report', function () {
     return view('index', ['tab' => 'revenue_report']);

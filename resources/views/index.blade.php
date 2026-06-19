@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Super Admin — Digital Network Command Center</title>
 
   <!-- ============================================================
@@ -684,21 +685,14 @@ function commandCenter() {
     ],
 
     // ── System Settings State ──
-    divisionsConfig: JSON.parse(localStorage.getItem('dnb_divisions_config')) || [
-      { id: 1, name: 'Jasa Buat Website', key: 'WEB_DEV', color: '#60a5fa', domain: 'buatwebjogja.gro.co.id', dbName: 'grop6915_buatweb_jogja', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/jasabuatwebsite' },
-      { id: 2, name: 'Jasa Buat Logo', key: 'BRAND_IDENTITY', color: '#a78bfa', domain: 'buatlogojogja.gro.co.id', dbName: 'grop6915_Jasa_Buat_Logo', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Buat_Logo' },
-      { id: 3, name: 'Jasa Advertising', key: 'PERF_ADS', color: '#fb923c', domain: 'sosmedjogja.gro.co.id', dbName: 'grop6915_Jasa_Social_Media_Management', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_Advertising' },
-      { id: 4, name: 'Jasa 3D Mockup', key: 'MOCKUP_3D', color: '#22d3ee', domain: 'animation.jogja.gro.co.id', dbName: 'grop6915_Jasa_Buat_Design', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa-3D-Mockup' },
-      { id: 5, name: 'SaaS', key: 'SAAS', color: '#f472b6', domain: 'inven.gro.co.id', dbName: 'grop6915_SaaS', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/SaaS' },
-      { id: 6, name: 'Jasa 3D Arsitek', key: 'DESIGN_3D_ARSITEK', color: '#f87171', domain: 'designrumah.gro.co.id', dbName: 'grop6915_Jasa_3D_Arsitek', dbUser: 'grop6915_ganang', dbPassword: 'FuvmtTA4f6sz36', folder: '/Users/mac/Project Website/Kerja/PT. Gro/Jasa_3D-Arsitek' }
-    ],
-    cpanelApiToken: localStorage.getItem('dnb_cpanel_token') || '',
-    metaAdsToken: localStorage.getItem('dnb_meta_token') || '',
-    googleAdsToken: localStorage.getItem('dnb_google_token') || '',
-    smtpHost: localStorage.getItem('dnb_smtp_host') || 'smtp.mailtrap.io',
-    smtpPort: localStorage.getItem('dnb_smtp_port') || '587',
-    smtpUser: localStorage.getItem('dnb_smtp_user') || 'dnb-system-notif',
-    smtpPassword: localStorage.getItem('dnb_smtp_password') || '',
+    divisionsConfig: [],
+    cpanelApiToken: '',
+    metaAdsToken: '',
+    googleAdsToken: '',
+    smtpHost: 'smtp.mailtrap.io',
+    smtpPort: '587',
+    smtpUser: 'dnb-system-notif',
+    smtpPassword: '',
 
     subAdmins: [
       { id: 1, name: 'Adi Wijaya', email: 'adi.web@dnb.com', initials: 'AW', division: 'Web Dev', divBadge: 'bg-blue-100 text-blue-700', role: 'Manage Project, VPS Write', status: 'active' },
@@ -717,8 +711,39 @@ function commandCenter() {
       this.generatedLink = `https://dnb.com/portal/guest?client=${encodeURIComponent(this.magicLinkClient)}&div=${encodeURIComponent(this.magicLinkDiv)}&token=${token}`;
     },
     
+    // ── Helper ──
+    async apiPost(url, data = {}) {
+      const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': token,
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      return response.json();
+    },
+
     // ── System Settings Actions ──
-    testDbConnection(id) {
+    async loadSettings() {
+      try {
+        const response = await fetch('/api/system-settings');
+        const data = await response.json();
+        this.divisionsConfig = data.divisions;
+        this.cpanelApiToken = data.globals.cpanelApiToken;
+        this.metaAdsToken = data.globals.metaAdsToken;
+        this.googleAdsToken = data.globals.googleAdsToken;
+        this.smtpHost = data.globals.smtpHost;
+        this.smtpPort = data.globals.smtpPort;
+        this.smtpUser = data.globals.smtpUser;
+        this.smtpPassword = data.globals.smtpPassword;
+      } catch (err) {
+        console.error('Failed to load settings:', err);
+      }
+    },
+    async testDbConnection(id) {
       const div = this.divisionsConfig.find(d => d.id === id);
       if (!div) return;
       
@@ -729,29 +754,65 @@ function commandCenter() {
         plug.classList.add('hidden');
       }
 
-      setTimeout(() => {
+      try {
+        const result = await this.apiPost(`/api/system-settings/test-db/${id}`, {
+          dbName: div.dbName,
+          dbUser: div.dbUser,
+          dbPassword: div.dbPassword
+        });
+
+        alert(result.message);
+      } catch (err) {
+        alert('Koneksi Gagal: Terjadi kesalahan jaringan atau server.');
+      } finally {
         if (spinner && plug) {
           spinner.classList.add('hidden');
           plug.classList.remove('hidden');
         }
-        alert(`Koneksi database ke "${div.dbName}" (${div.name}) Berhasil!\nHost: localhost\nUser: ${div.dbUser || 'root'}\nStatus: Active & Connected`);
-      }, 1000);
+      }
     },
-    saveDivisionConfig(id) {
+    async saveDivisionConfig(id) {
       const div = this.divisionsConfig.find(d => d.id === id);
       if (!div) return;
-      localStorage.setItem('dnb_divisions_config', JSON.stringify(this.divisionsConfig));
-      alert(`Konfigurasi Node "${div.name}" berhasil disimpan.`);
+
+      try {
+        const result = await this.apiPost(`/api/system-settings/division/${id}`, {
+          domain: div.domain,
+          folder: div.folder,
+          dbName: div.dbName,
+          dbUser: div.dbUser,
+          dbPassword: div.dbPassword
+        });
+
+        if (result.success) {
+          alert(result.message);
+        } else {
+          alert('Gagal menyimpan konfigurasi.');
+        }
+      } catch (err) {
+        alert('Gagal menyimpan: Terjadi kesalahan jaringan.');
+      }
     },
-    saveGlobalSettings() {
-      localStorage.setItem('dnb_cpanel_token', this.cpanelApiToken);
-      localStorage.setItem('dnb_meta_token', this.metaAdsToken);
-      localStorage.setItem('dnb_google_token', this.googleAdsToken);
-      localStorage.setItem('dnb_smtp_host', this.smtpHost);
-      localStorage.setItem('dnb_smtp_port', this.smtpPort);
-      localStorage.setItem('dnb_smtp_user', this.smtpUser);
-      localStorage.setItem('dnb_smtp_password', this.smtpPassword);
-      alert('Pengaturan Global Third-Party Integrations & SMTP berhasil disimpan.');
+    async saveGlobalSettings() {
+      try {
+        const result = await this.apiPost('/api/system-settings/global', {
+          cpanelApiToken: this.cpanelApiToken,
+          metaAdsToken: this.metaAdsToken,
+          googleAdsToken: this.googleAdsToken,
+          smtpHost: this.smtpHost,
+          smtpPort: this.smtpPort,
+          smtpUser: this.smtpUser,
+          smtpPassword: this.smtpPassword
+        });
+
+        if (result.success) {
+          alert(result.message);
+        } else {
+          alert('Gagal menyimpan pengaturan global.');
+        }
+      } catch (err) {
+        alert('Gagal menyimpan: Terjadi kesalahan jaringan.');
+      }
     },
     createInvoice() {
       if (!this.newInvoiceClient || !this.newInvoiceDiv || !this.newInvoiceAmount || !this.newInvoiceDueDate) {
@@ -796,6 +857,7 @@ function commandCenter() {
         localStorage.setItem('dnb_logged_in', 'true');
         this.loginEmail = '';
         this.loginPassword = '';
+        this.loadSettings();
       } else {
         this.loginError = 'Email atau password yang Anda masukkan salah.';
       }
@@ -936,15 +998,22 @@ function commandCenter() {
     ],
 
     // ── Init ──
-    init() {
-      // Reset division cache if it's the old structure or missing password or outdated domain
-      if (localStorage.getItem('dnb_divisions_config') && (localStorage.getItem('dnb_divisions_config').includes('social-media') || localStorage.getItem('dnb_divisions_config').includes('Web Dev') || localStorage.getItem('dnb_divisions_config').includes('Webdev') || !localStorage.getItem('dnb_divisions_config').includes('grop6915_ganang') || !localStorage.getItem('dnb_divisions_config').includes('FuvmtTA4f6sz36') || localStorage.getItem('dnb_divisions_config').includes('inventory.jogja.gro.co.id') || localStorage.getItem('dnb_divisions_config').includes('jasasocialmanagement.gro.co.id'))) {
-        localStorage.removeItem('dnb_divisions_config');
-        window.location.reload();
-      }
+    async init() {
+      // Remove old localStorage cache since we are now database driven
+      localStorage.removeItem('dnb_divisions_config');
+      localStorage.removeItem('dnb_cpanel_token');
+      localStorage.removeItem('dnb_meta_token');
+      localStorage.removeItem('dnb_google_token');
+      localStorage.removeItem('dnb_smtp_host');
+      localStorage.removeItem('dnb_smtp_port');
+      localStorage.removeItem('dnb_smtp_user');
+      localStorage.removeItem('dnb_smtp_password');
 
       // Check auth state
       this.isLoggedIn = localStorage.getItem('dnb_logged_in') === 'true';
+      if (this.isLoggedIn) {
+        await this.loadSettings();
+      }
 
       const tick = () => {
         const now = new Date();
