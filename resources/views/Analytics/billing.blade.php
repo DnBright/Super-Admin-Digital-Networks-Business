@@ -60,8 +60,11 @@
                         :class="inv.status === 'paid' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : (inv.status === 'overdue' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-amber-50 text-amber-700 border border-amber-200')"
                         x-text="inv.status"></span>
                 </td>
-                <td class="px-5 py-3.5 text-right">
-                  <button @click="alert('Reviewing invoice: ' + inv.invoiceNo)" class="text-indigo-600 hover:text-indigo-700 font-bold text-[10px] hover:underline">Review</button>
+                <td class="px-5 py-3.5 text-right flex justify-end gap-2.5">
+                  <a :href="'/billing-invoice/' + inv.id + '/pdf'" 
+                     class="text-indigo-650 hover:text-indigo-800 font-bold text-[10px] hover:underline flex items-center gap-1">
+                    <i class="fa-solid fa-file-pdf"></i> PDF
+                  </a>
                 </td>
               </tr>
             </template>
@@ -165,6 +168,42 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Blockchain Ledger Verification Card -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-card p-5 space-y-4">
+        <h3 class="text-xs font-bold text-slate-700 uppercase tracking-widest flex items-center gap-1.5">
+          <i class="fa-solid fa-link text-indigo-500"></i>
+          Blockchain Audit Ledger
+        </h3>
+        <p class="text-[11px] text-slate-500 leading-relaxed">Verifikasi integritas kriptografi hash chain seluruh invoice yang terdaftar di database.</p>
+
+        <!-- Status Indikator -->
+        <div class="p-3 rounded-lg border flex items-center justify-between text-xs font-semibold"
+             :class="blockchainStatus === 'idle' ? 'bg-slate-50 border-slate-200 text-slate-600' : 
+                     (blockchainStatus === 'validating' ? 'bg-indigo-50 border-indigo-200 text-indigo-700 animate-pulse' : 
+                     (blockchainStatus === 'valid' ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-rose-50 border-rose-200 text-rose-700'))">
+          <span x-text="blockchainStatus === 'idle' ? 'Ready to Audit' : 
+                       (blockchainStatus === 'validating' ? 'Checking Hashes...' : 
+                       (blockchainStatus === 'valid' ? 'Ledger Secured (Safe)' : 'Ledger Tampered! (Danger)'))"></span>
+          <span class="w-2.5 h-2.5 rounded-full"
+                :class="blockchainStatus === 'idle' ? 'bg-slate-400' : 
+                        (blockchainStatus === 'validating' ? 'bg-indigo-500' : 
+                        (blockchainStatus === 'valid' ? 'bg-emerald-500 shadow-[0_0_8px_#10b981]' : 'bg-rose-500 shadow-[0_0_8px_#ef4444] animate-ping'))"></span>
+        </div>
+
+        <!-- Logs Box -->
+        <div x-show="blockchainLogs.length > 0" class="bg-slate-900 rounded-lg p-3 text-[10px] font-mono text-slate-350 max-h-[120px] overflow-y-auto space-y-1">
+          <template x-for="log in blockchainLogs">
+            <div x-text="log" :class="log.includes('[AMAN]') ? 'text-emerald-450 font-bold' : 'text-rose-400'"></div>
+          </template>
+        </div>
+
+        <button @click="validateBlockchainLedger()" :disabled="blockchainStatus === 'validating'"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-[11px] py-2 rounded-lg transition-all shadow-md active:scale-[0.99] w-full flex items-center justify-center gap-1.5 disabled:opacity-50">
+          <i class="fa-solid fa-shield-halved"></i>
+          Audit Chain Integrity
+        </button>
       </div>
 
     </div>

@@ -664,13 +664,9 @@ function commandCenter() {
     generatedLink: '',
     
     // ── Analytics & Billing State ──
-    invoices: [
-      { id: 1, invoiceNo: 'INV-2026-001', clientName: 'PT Maju Bersama', division: 'Web Dev', amount: 'Rp 45.000.000', dueDate: '2026-06-15', status: 'paid' },
-      { id: 2, invoiceNo: 'INV-2026-002', clientName: 'CV Kreasi Digital', division: 'Video Prod', amount: 'Rp 28.500.000', dueDate: '2026-05-20', status: 'overdue' },
-      { id: 3, invoiceNo: 'INV-2026-003', clientName: 'Startup Nusantara', division: 'Perf. Ads', amount: 'Rp 15.000.000', dueDate: '2026-06-30', status: 'unpaid' },
-      { id: 4, invoiceNo: 'INV-2026-004', clientName: 'PT Maju Bersama', division: 'Brand Identity', amount: 'Rp 12.000.000', dueDate: '2026-06-05', status: 'paid' },
-      { id: 5, invoiceNo: 'INV-2026-005', clientName: 'Nusantara Global', division: '3D Mockup', amount: 'Rp 35.000.000', dueDate: '2026-07-10', status: 'unpaid' }
-    ],
+    invoices: @json($invoices ?? \App\Domains\SuperAdmin\Models\Invoice::all()->map(function($inv) { return [ 'id' => $inv->id, 'invoiceNo' => $inv->invoice_no, 'clientName' => $inv->client_name, 'division' => $inv->division, 'amount' => $inv->amount, 'dueDate' => $inv->due_date, 'status' => $inv->status, 'hash' => $inv->hash ]; })),
+    blockchainStatus: 'idle',
+    blockchainLogs: [],
     newInvoiceClient: '',
     newInvoiceDiv: '',
     newInvoiceAmount: '',
@@ -814,34 +810,64 @@ function commandCenter() {
         alert('Gagal menyimpan: Terjadi kesalahan jaringan.');
       }
     },
-    createInvoice() {
+    async createInvoice() {
       if (!this.newInvoiceClient || !this.newInvoiceDiv || !this.newInvoiceAmount || !this.newInvoiceDueDate) {
         alert('Mohon lengkapi semua input data invoice.');
         return;
       }
       
-      const nextId = this.invoices.length + 1;
       const formattedAmount = 'Rp ' + Number(this.newInvoiceAmount).toLocaleString('id-ID');
-      const invoiceNo = `INV-2026-0${nextId}`;
 
-      const newInv = {
-        id: nextId,
-        invoiceNo: invoiceNo,
-        clientName: this.newInvoiceClient,
-        division: this.newInvoiceDiv,
-        amount: formattedAmount,
-        dueDate: this.newInvoiceDueDate,
-        status: 'unpaid'
-      };
+      try {
+        const result = await this.apiPost('/api/billing-invoice', {
+          client_name: this.newInvoiceClient,
+          division: this.newInvoiceDiv,
+          amount: formattedAmount,
+          due_date: this.newInvoiceDueDate,
+          status: 'unpaid'
+        });
 
-      this.invoices.unshift(newInv);
+        if (result.success) {
+          this.invoices.unshift(result.invoice);
+          this.newInvoiceClient = '';
+          this.newInvoiceDiv = '';
+          this.newInvoiceAmount = '';
+          this.newInvoiceDueDate = '';
+          alert(result.message);
+        } else {
+          alert('Gagal menerbitkan invoice.');
+        }
+      } catch (err) {
+        alert('Gagal menerbitkan invoice: Terjadi kesalahan jaringan.');
+      }
+    },
+    async validateBlockchainLedger() {
+      this.blockchainStatus = 'validating';
+      this.blockchainLogs = [];
       
-      this.newInvoiceClient = '';
-      this.newInvoiceDiv = '';
-      this.newInvoiceAmount = '';
-      this.newInvoiceDueDate = '';
-
-      alert(`Invoice ${invoiceNo} berhasil dibuat.`);
+      try {
+        const response = await fetch('/api/billing-invoice/validate');
+        const result = await response.json();
+        
+        if (result.success) {
+          if (result.is_valid) {
+            this.blockchainStatus = 'valid';
+            this.blockchainLogs.push(`[AMAN] Seluruh ${result.total_checked} record invoice dalam ledger terenkripsi secara sinkron.`);
+          } else {
+            this.blockchainStatus = 'tampered';
+            this.blockchainLogs.push(`[PERINGATAN KRITIS] Integritas data ledger rusak!`);
+            result.tampered.forEach(log => {
+              this.blockchainLogs.push(`- Terdeteksi modifikasi: ${log}`);
+            });
+          }
+        } else {
+          this.blockchainStatus = 'idle';
+          alert('Gagal memverifikasi ledger.');
+        }
+      } catch (err) {
+        this.blockchainStatus = 'idle';
+        alert('Gagal memverifikasi: Terjadi kesalahan jaringan.');
+      }
     },
     isLoggedIn: false,
     loginEmail: '',

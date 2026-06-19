@@ -16,6 +16,7 @@ Route::get('/access-control', function () {
     return view('index', ['tab' => 'access_control']);
 });
 
+use App\Domains\SuperAdmin\Controllers\BillingController;
 use App\Domains\SuperAdmin\Controllers\SystemSettingsController;
 
 Route::get('/system-settings', function () {
@@ -31,9 +32,11 @@ Route::get('/revenue-report', function () {
     return view('index', ['tab' => 'revenue_report']);
 });
 
-Route::get('/billing-invoice', function () {
-    return view('index', ['tab' => 'billing_invoice']);
-});
+// Dynamic Billing & Invoice Routes
+Route::get('/billing-invoice', [BillingController::class, 'index'])->name('billing.index');
+Route::post('/api/billing-invoice', [BillingController::class, 'store'])->name('api.billing.store');
+Route::get('/api/billing-invoice/validate', [BillingController::class, 'validateChain'])->name('api.billing.validate');
+Route::get('/billing-invoice/{id}/pdf', [BillingController::class, 'downloadPdf'])->name('billing.pdf');
 
 Route::get('/client-directory', function () {
     return view('index', ['tab' => 'client_directory']);
@@ -41,12 +44,12 @@ Route::get('/client-directory', function () {
 
 // Load sub-route files from the web/ directory
 Route::middleware('web')->group(function () {
-    require __DIR__ . '/web/auth.php';
-    require __DIR__ . '/web/superadmin.php';
-    require __DIR__ . '/web/webdev.php';
-    require __DIR__ . '/web/brand-id.php';
-    require __DIR__ . '/web/ads-marketing.php';
-    require __DIR__ . '/web/3d-mockup.php';
-    require __DIR__ . '/web/saas.php';
-    require __DIR__ . '/web/design3d-arsitek.php';
+    require __DIR__.'/web/auth.php';
+    require __DIR__.'/web/superadmin.php';
+    require __DIR__.'/web/webdev.php';
+    require __DIR__.'/web/brand-id.php';
+    require __DIR__.'/web/ads-marketing.php';
+    require __DIR__.'/web/3d-mockup.php';
+    require __DIR__.'/web/saas.php';
+    require __DIR__.'/web/design3d-arsitek.php';
 });
